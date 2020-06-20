@@ -36,7 +36,7 @@ function App() {
         <Route path="/">
           <Login />
           <div className="btn-group">
-            <Link to="/roles" className="btn btn-dark"> Entrar </Link>
+           
 
           </div>
         </Route>
