@@ -1,6 +1,8 @@
 import React from 'react'
 import ButtonReturn from './ButtonReturn'
 import { firebase } from './firebase'
+import {Link} from "react-router-dom"
+import ButtonAddTable from './ButtonAddTable'
 
 const Floor = () => {
 
@@ -13,11 +15,13 @@ const Floor = () => {
       try {
 
         const db = firebase.firestore()
-        const data = await db.collection('tables').get()
+        const data = await db.collection('tables').orderBy('number', 'desc').get()
         const arrayData= data.docs.map(doc=>({id : doc.id, ...doc.data()}))
         
-        console.log(arrayData)
+        //console.log(arrayData)
         setMesa(arrayData)
+
+       
 
       } catch (error) {
         console.log(error)
@@ -27,9 +31,7 @@ const Floor = () => {
 
   }, [])
 
-const prueba =()=>{
-    console.log("estamos en pruebas")
-}
+
     
 
     return (
@@ -43,15 +45,17 @@ const prueba =()=>{
             {
         mesa.map(item=>(
         <li className="list-group-item" 
-        key={item.id}
-        onClick={prueba}>
+        key={item.id}>
+          <Link to= {`/roles/piso/${item.id}`}>  
         {item.number}
+        </Link>
          </li>
   ))
 }
 
 
         <ButtonReturn/>
+        <ButtonAddTable/>
 
         </div>
     )
