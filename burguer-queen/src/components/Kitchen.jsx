@@ -4,7 +4,7 @@ import ButtonReturn from './ButtonReturn'
 const Kitchen = () => {
     return (
         <div>
-            AQUI VAN A IR TODAS LAS ÓRDENES :
+            AQUI VAN A IR TODAS LAS ÓRDENES
             <ButtonReturn/>
         </div>
 
