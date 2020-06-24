@@ -1,15 +1,10 @@
 import React from 'react'
 import {Link} from "react-router-dom"
-const ButtonReturn = () => {
-
-
-
+const ButtonReturn = (props) => {
 
     return (
         <div>
-            
-
-                 <Link to="/roles" className="btn btn-dark"> Regresar </Link>
+         <Link to={props.ruta} className={props.btnStyles}> {props.text} </Link>
         </div>
     )
 }

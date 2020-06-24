@@ -2,7 +2,7 @@ import React from 'react'
 import ButtonReturn from './ButtonReturn'
 import { firebase } from './firebase'
 import {Link} from "react-router-dom"
-import ButtonAddTable from './ButtonAddTable'
+
 
 const Floor = () => {
 
@@ -38,24 +38,30 @@ const Floor = () => {
 
 
 
-        <div>
+        <div className="text-center">
             un chingo de mesas
 
 
             {
         mesa.map(item=>(
-        <li className="list-group-item" 
-        key={item.id}>
-          <Link to= {`/roles/piso/${item.id}`}  className="btn btn-light">  
+        <p  key={item.id}>
+          <Link to= {`/roles/piso/${item.id}`} className="btn btn-outline-warning btn-lg btn-block">  
         {item.number}
         </Link>
-         </li>
+         </p>
   ))
 }
 
 
-        <ButtonReturn/>
-        <ButtonAddTable/>
+        <ButtonReturn
+        ruta ="/roles"
+        btnStyles = "btn btn-dark"
+        text = "Regresar"/>
+        <hr/>
+        <ButtonReturn 
+        ruta ="/roles/piso/mesaNueva"
+        btnStyles = "btn btn-warning"
+        text = "Agregar Mesa" />
 
         </div>
     )

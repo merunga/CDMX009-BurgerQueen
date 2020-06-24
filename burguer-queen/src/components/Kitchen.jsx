@@ -5,7 +5,10 @@ const Kitchen = () => {
     return (
         <div>
             AQUI VAN A IR TODAS LAS ÓRDENES
-            <ButtonReturn/>
+            <ButtonReturn
+            ruta ="/roles"
+            btnStyles = "btn btn-secondary"
+            text="Regresar"/>
         </div>
 
         
