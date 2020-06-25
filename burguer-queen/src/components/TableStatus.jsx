@@ -42,17 +42,23 @@ const TableStatus = (index) => {
 
 
         <div>
-
-            {
-
-                <li className="list-group-item"
-                    key={index}>
-
-                    {dataTable.number} - {dataTable.client} - {dataTable.employ} -{dataTable.orden}
-
-                </li>
-
-            }
+        
+        {
+       
+            <div 
+            key={index}>
+           
+           <h1>Mesa: <span className="badge badge-dark">{dataTable.number}</span></h1>
+           <h4>Cliente: <span className="badge badge-dark">{dataTable.client}</span></h4>
+           <h4>Meser@: <span className="badge badge-dark">{dataTable.employ}</span></h4>
+           <h4>Orden: <span className="badge badge-dark">{dataTable.orden}</span></h4>
+           <h4>Estatus: <span className="badge badge-dark">{dataTable.status}</span></h4>
+           <h4>Total:<span className="badge badge-dark">{dataTable.price}</span> </h4>
+           
+        
+             </div>
+ 
+}
 
 
             <button className="btn btn-danger">Agregar algo a la orden</button>
@@ -60,10 +66,10 @@ const TableStatus = (index) => {
             <button className="btn btn-danger">Cuenta</button>
 
 
-            <ButtonReturn
-                ruta="/roles/piso"
-                btnStyles = "btn btn-warning"
-                text="Ver Mesas" />
+             <ButtonReturn
+            ruta = "/roles/piso"
+            btnStyles= "btn btn-warning"
+            text = "Ver Mesas"/>
         </div>
     )
 }

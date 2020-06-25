@@ -39,7 +39,9 @@ const Floor = () => {
 
 
         <div className="text-center">
-            un chingo de mesas
+        <div>
+        </div>
+            <h1  className="text-warning">Mesas Activas</h1>
 
 
             {
@@ -51,9 +53,7 @@ const Floor = () => {
          </p>
   ))
 }
-
-
-        <ButtonReturn
+<ButtonReturn
         ruta ="/roles"
         btnStyles = "btn btn-dark"
         text = "Regresar"/>
