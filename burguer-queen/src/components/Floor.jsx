@@ -2,7 +2,7 @@ import React from 'react'
 import ButtonReturn from './ButtonReturn'
 import { firebase } from './firebase'
 import {Link} from "react-router-dom"
-import ButtonAddTable from './ButtonAddTable'
+
 
 const Floor = () => {
 
@@ -39,7 +39,7 @@ const Floor = () => {
 
 
         <div className="text-center">
-            un chingo de mesas
+            <h1  className="text-warning">Mesas Activas</h1>
 
 
             {
@@ -51,11 +51,15 @@ const Floor = () => {
          </p>
   ))
 }
-
-
-        <ButtonReturn/>
+<ButtonReturn
+        ruta ="/roles"
+        btnStyles = "btn btn-dark"
+        text = "Regresar"/>
         <hr/>
-        <ButtonAddTable/>
+        <ButtonReturn 
+        ruta ="/roles/piso/mesaNueva"
+        btnStyles = "btn btn-warning"
+        text = "Agregar Mesa" />
 
         </div>
     )

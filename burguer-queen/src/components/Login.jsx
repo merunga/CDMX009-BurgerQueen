@@ -1,6 +1,5 @@
 import React from 'react'
-import {Link} from "react-router-dom"
-//import LogoStart from './LogoStart'
+import ButtonReturn from './ButtonReturn'
 import queen from '../imgs/queen.png'
 
 const Login = () => {
@@ -11,7 +10,10 @@ const Login = () => {
 </div>
 <hr/>
 
-            <Link to="/roles" className="btn btn-warning btn-lg"> Entrar </Link>
+<ButtonReturn 
+        ruta = "/roles"
+        btnStyles = "btn btn-warning btn-lg"
+        text = "Entrar"/>
         </div>
     )
 }

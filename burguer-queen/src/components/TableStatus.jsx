@@ -1,7 +1,7 @@
 import React from 'react'
-import BackAllTables from './BackAllTables'
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { firebase } from './firebase'
+import ButtonReturn from './ButtonReturn'
 
 
 const TableStatus = (index) => {
@@ -45,12 +45,17 @@ const TableStatus = (index) => {
         
         {
        
-            <li className="list-group-item" 
+            <div 
             key={index}>
            
-            {dataTable.number} - {dataTable.client} - {dataTable.employ} -{dataTable.orden}
+           <h1>Mesa: <span className="badge badge-dark">{dataTable.number}</span></h1>
+           <h4>Cliente: <span className="badge badge-dark">{dataTable.client}</span></h4>
+           <h4>Meser@: <span className="badge badge-dark">{dataTable.employ}</span></h4>
+           <h4>Orden: <span className="badge badge-dark">{dataTable.orden}</span></h4>
+           <h4>Estatus: <span className="badge badge-dark">{dataTable.status}</span></h4>
+           
         
-             </li>
+             </div>
  
 }
 
@@ -60,7 +65,10 @@ const TableStatus = (index) => {
              <button className="btn btn-danger">Cuenta</button>
 
 
-            <BackAllTables/>
+             <ButtonReturn
+            ruta = "/roles/piso"
+            btnStyles= "btn btn-warning"
+            text = "Ver Mesas"/>
         </div>
     )
 }
