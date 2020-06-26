@@ -92,13 +92,7 @@ export const burgersTime =
 ]
 
 
-//const menus = {
-//
-//    breackfast, burgerTime
-//}
 
-
-//export default menus;
 
 
 

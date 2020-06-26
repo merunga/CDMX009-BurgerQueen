@@ -3,12 +3,10 @@ import { firebase } from './firebase'
 import breakfast from '../imgs/breakfast.png'
 import burgerTime from '../imgs/burgerTime.svg'
 import ButtonReturn from './ButtonReturn'
-import {breackfast, burgersTime} from '../utils/menus.js'
+import { breackfast, burgersTime } from '../utils/menus.js'
 import ImgMenus from './ImgMenus'
 import Form from './Form'
 import CardBurger from './CardBurger'
-
-
 
 const NewTable = () => {
 
@@ -16,10 +14,12 @@ const NewTable = () => {
   const [client, setClient] = React.useState("")
   const [table, setTable] = React.useState("")
   const [cartDinner, setCartDinner] = React.useState(false)
-  const [cardBreakfast, setCardBreacfast]= React.useState(false)
-  const [orden, setOrden]= React.useState([])
- 
-  
+  const [cardBreakfast, setCardBreacfast] = React.useState(false)
+  const [orden, setOrden] = React.useState([])
+  const [price, setPrice] = React.useState([])
+
+
+
 
   const prueba = () => {
 
@@ -56,12 +56,9 @@ const NewTable = () => {
         status: "",
         timeIn: Date.now(),
         timeOut: "",
-        total:orden[1]
-
-
+        price: price,
       }
       const data = await db.collection('tables').add(newTable)
-
 
       setClient('')
       setTable('')
@@ -76,82 +73,75 @@ const NewTable = () => {
     console.log("yeah")
   }
 
-
-  
-
-
-  const showDinner=()=>{
-   setCartDinner(true)
-   setCardBreacfast(false)
+  const showDinner = () => {
+    setCartDinner(true)
+    setCardBreacfast(false)
   }
 
-  const showbreakfast=()=>{
+  const showbreakfast = () => {
     setCardBreacfast(true)
     setCartDinner(false)
   }
 
-const addSomething =(item)=>{
- 
-  const newarray=[]
-const targ= (item.product)
-const targ2= (item.precio)
- newarray.push(targ, targ2)
+  const addSomething = (item) => {
 
- 
-setOrden(newarray)
-  console.log(setOrden)
-  
-
-}
+    const newarray = []
+    const arrayTotal = []
+    const targ = (item.product)
+    const targ2 = (item.precio)
+    newarray.push(targ)
+    setOrden([...orden," ", ...newarray])
+    console.log(setOrden)
+    arrayTotal.push(targ2)
+    setPrice([...price, ...arrayTotal])
+  }
 
   return (
     <div className="text-center">
       <ul className="mt-5 ml-5 mr-5">
-        
-        <Form
-        types="text"
-        text="meser@"
-        changeAction= {e => setWaiter(e.target.value)}
-        val= {waiter}/>
-
-         <Form
-         text= "Ingresar nombre del cliente"
-         changeAction={e => setClient(e.target.value)}
-         val={client}/>
 
         <Form
-        types="text"
-         text= "Ingrese número de mesa"
-         changeAction={e => setTable(e.target.value)}
-         val={table}/>
+          types="text"
+          text="meser@"
+          changeAction={e => setWaiter(e.target.value)}
+          val={waiter} />
+
+        <Form
+          text="Ingresar nombre del cliente"
+          changeAction={e => setClient(e.target.value)}
+          val={client} />
+
+        <Form
+          types="text"
+          text="Ingrese número de mesa"
+          changeAction={e => setTable(e.target.value)}
+          val={table} />
       </ul>
       <ImgMenus
-      types="number"
-      src={burgerTime}
-      style="btn img-fluid mt-5"
-      action= {showDinner}/> 
-      
+        types="number"
+        src={burgerTime}
+        style="btn img-fluid mt-5"
+        action={showDinner} />
+
       <ImgMenus
-      src={breakfast}
-      style="btn img-fluid mt-5"
-      action= {showbreakfast}/>
+        src={breakfast}
+        style="btn img-fluid mt-5"
+        action={showbreakfast} />
 
-      
+      <div>
+        {cartDinner ? burgersTime.map(item => (<div key={item.id}><CardBurger element={item.product} price={item.precio} addToMenu={() => addSomething(item)} /> </div>))
 
-      <div> 
-  { cartDinner ? burgersTime.map(item=>( <div  key={item.id}><CardBurger  element={item.product} price={item.precio} addToMenu= {()=>addSomething(item)}/> </div>))
-  
-  : <img src="https://http2.mlstatic.com/gato-persa-busca-novia-libre-de-pkd-gatitos-disponibles-D_NQ_NP_862913-MLM31839317244_082019-O.webp" alt="" className="btn"
-        onClick={prueba} />
-&& cardBreakfast ? breackfast.map(item=>( <div  key={item.id}><CardBurger  element={item.product} price={item.precio} addToMenu= {addSomething}/> </div>))
-: <img src="https://http2.mlstatic.com/gato-persa-busca-novia-libre-de-pkd-gatitos-disponibles-D_NQ_NP_862913-MLM31839317244_082019-O.webp" alt="" className="btn"
-onClick={prueba} />
-}
+          : <img src="https://http2.mlstatic.com/gato-persa-busca-novia-libre-de-pkd-gatitos-disponibles-D_NQ_NP_862913-MLM31839317244_082019-O.webp" alt="" className="btn"
+            onClick={prueba} />
+            && cardBreakfast ? breackfast.map(item => (<div key={item.id}><CardBurger element={item.product} price={item.precio} addToMenu={()=>addSomething(item)} /> </div>))
+            : <img src="https://http2.mlstatic.com/gato-persa-busca-novia-libre-de-pkd-gatitos-disponibles-D_NQ_NP_862913-MLM31839317244_082019-O.webp" alt="" className="btn"
+              onClick={prueba} />
+        }
       </div>
 
       <ButtonReturn
         ruta="/roles/piso"
-        btnStyles= "btn btn-warning"
+        btnStyles="btn btn-warning"
         text="Ver Mesas"
       />
       <button className="btn btn-warning"

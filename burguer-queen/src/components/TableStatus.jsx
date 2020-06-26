@@ -53,7 +53,7 @@ const TableStatus = (index) => {
            <h4>Meser@: <span className="badge badge-dark">{dataTable.employ}</span></h4>
            <h4>Orden: <span className="badge badge-dark">{dataTable.orden}</span></h4>
            <h4>Estatus: <span className="badge badge-dark">{dataTable.status}</span></h4>
-           
+           <h4>Total: <span className="badge badge-dark">{dataTable.price}</span></h4>
         
              </div>
  
