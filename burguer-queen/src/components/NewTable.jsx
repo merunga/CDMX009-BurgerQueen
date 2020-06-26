@@ -6,7 +6,6 @@ import {breackfast, burgersTime} from '../utils/menus.js'
 import ImgMenus from './ImgMenus'
 import Form from './Form'
 import CardBurger from './CardBurger'
-
 import { createTable } from '../controllers';
 
 const NewTable = () => {
@@ -19,7 +18,6 @@ const NewTable = () => {
   const [price, setPrice]=React.useState([])
  
   const prueba = () => {
-    
     console.log("jjjjjjjj no sabemos que pedou")
     setCartDinner(false)
   }
@@ -40,7 +38,7 @@ const NewTable = () => {
       setClient('')
       setTable('')
       setWaiter('')
-
+      
       console.log("se guardó en bd")
 
     } catch (error) {
@@ -48,6 +46,7 @@ const NewTable = () => {
     }
 
     console.log("yeah")
+
   }
 
   const showDinnerOrBreakfast = (isDinner) => () => {
@@ -56,7 +55,6 @@ const NewTable = () => {
   }
 
 const addSomething =(item)=>{
- 
   const newarray = []
   const arrayTotal = []
   const targ = (item.product)
@@ -66,9 +64,13 @@ const addSomething =(item)=>{
   console.log(setOrden)
   arrayTotal.push(targ2)
   setPrice([...price, ...arrayTotal])
-
-
+  
 }
+
+
+
+
+
 
   const cartAMostrar = ((cartDinner && burgersTime) || (cardBreakfast && breackfast));
 
@@ -78,7 +80,7 @@ const addSomething =(item)=>{
         
         <Form
         types="text"
-        text="meser@"
+        text="Meser@"
         changeAction= {e => setWaiter(e.target.value)}
         val= {waiter}/>
 
@@ -88,22 +90,22 @@ const addSomething =(item)=>{
          val={client}/>
 
         <Form
-        types="text"
-         text= "Ingrese número de mesa"
-         changeAction={e => setTable(e.target.value)}
-         val={table}/>
+        types="number"
+        text= "Ingrese número de mesa"
+        changeAction={e => setTable(e.target.value)}
+        val={table}/>
       </ul>
-      <ImgMenus
-      types="number"
-      src={burgerTime}
-      style="btn img-fluid mt-5"
-      action= {showDinnerOrBreakfast(true)}/> 
       
-      <ImgMenus
-      src={breakfast}
-      style="btn img-fluid mt-5"
-      action= {showDinnerOrBreakfast(false)}/>
+       <ImgMenus
 
+       src={burgerTime}
+       action= {showDinnerOrBreakfast(true)}/> 
+       
+       <ImgMenus
+       src={breakfast}
+       action= {showDinnerOrBreakfast(false)}/>
+    
+       
     
       <div>
         {(!cartAMostrar) && (
