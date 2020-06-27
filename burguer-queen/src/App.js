@@ -1,5 +1,5 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,6 +14,8 @@ import TableStatus from './components/TableStatus';
 import NewTable from './components/NewTable';
 
 function App() {
+
+  
   return (
     <Router>
 

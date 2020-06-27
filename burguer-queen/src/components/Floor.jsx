@@ -1,27 +1,18 @@
 import React from 'react'
 import ButtonReturn from './ButtonReturn'
-import { firebase } from './firebase'
-import {Link} from "react-router-dom"
-
+import { Link } from "react-router-dom"
+import { showTables } from '../controllers'
 
 const Floor = () => {
 
-    
- const[mesa, setMesa]= React.useState([])
+  const [mesa, setMesa] = React.useState([])
 
- React.useEffect(() => {
+  React.useEffect(() => {
 
     const obtenerDatos = async () => {
       try {
-
-        const db = firebase.firestore()
-        const data = await db.collection('tables').orderBy('number', 'desc').get()
-        const arrayData= data.docs.map(doc=>({id : doc.id, ...doc.data()}))
-        
-        //console.log(arrayData)
-        setMesa(arrayData)
-
-       
+        const resul = await showTables()
+        setMesa(resul)
 
       } catch (error) {
         console.log(error)
@@ -31,38 +22,34 @@ const Floor = () => {
 
   }, [])
 
+  return (
 
-    
+    <div className="text-center">
+      <div>
+      </div>
+      <h1 className="text-warning">Mesas Activas</h1>
 
-    return (
+      {
+        mesa.map(item => (
+          <p key={item.id}>
+            <Link to={`/roles/piso/${item.id}`} className="btn btn-outline-warning btn-lg btn-block">
+              {item.number}
+            </Link>
+          </p>
+        ))
+      }
+      <ButtonReturn
+        ruta="/roles"
+        btnStyles="btn btn-dark"
+        text="Regresar" />
+      <hr />
+      <ButtonReturn
+        ruta="/roles/piso/mesaNueva"
+        btnStyles="btn btn-warning"
+        text="Agregar Mesa" />
 
-
-
-        <div className="text-center">
-            <h1  className="text-warning">Mesas Activas</h1>
-
-
-            {
-        mesa.map(item=>(
-        <p  key={item.id}>
-          <Link to= {`/roles/piso/${item.id}`} className="btn btn-outline-warning btn-lg btn-block">  
-        {item.number}
-        </Link>
-         </p>
-  ))
-}
-<ButtonReturn
-        ruta ="/roles"
-        btnStyles = "btn btn-dark"
-        text = "Regresar"/>
-        <hr/>
-        <ButtonReturn 
-        ruta ="/roles/piso/mesaNueva"
-        btnStyles = "btn btn-warning"
-        text = "Agregar Mesa" />
-
-        </div>
-    )
+    </div>
+  )
 }
 
 export default Floor

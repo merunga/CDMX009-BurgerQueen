@@ -2,37 +2,37 @@
 
 export const breackfast = 
 [{
-    id:1,
+    id:11,
     product: "Café Americano",
     precio: 25
 },
     {
-        id:2,
+        id:12,
         product: "Café con leche",
         precio: 27
     },
     {
-        id:3,
+        id:13,
         product: "Jugo de frutas",
         precio: 27
     },
     {
-        id:4,
+        id:14,
         product: "Té",
         precio: 15
     },
     {
-        id:5,
+        id:15,
         product: "Sandwich jamón y queso",
         precio: 20
     },
     {
-        id:6,
+        id:16,
         product: "Hot Cakes",
         precio : 25
     },
     {
-        id:7,
+        id:17,
         product: "Coctel de frutas",
         precio: 20
     }
