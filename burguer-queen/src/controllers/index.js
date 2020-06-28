@@ -64,3 +64,12 @@ export const edit = async (id, tarea) => {
     })
     
   } 
+
+  export const editTime = async (id, tarea) => {
+ 
+    const db = firebase.firestore()
+    await db.collection('tables').doc(id).update({
+      timeOut: tarea
+    })
+    
+  } 
