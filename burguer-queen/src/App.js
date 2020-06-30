@@ -15,6 +15,7 @@ import NewTable from './components/NewTable';
 
 function App() {
 
+  const[inicial, setInicial]= React.useState('')
   
   return (
     <Router>
@@ -22,7 +23,8 @@ function App() {
    
   <Switch>
   <Route path="/roles/piso/mesaNueva">
-    <NewTable />
+    <NewTable
+    setInicial={setInicial} />
   </Route>
   <Route path="/roles/piso/:id">
     <TableStatus />
@@ -31,7 +33,8 @@ function App() {
     <Floor />
   </Route>
   <Route path="/roles/cocina">
-    <Kitchen />
+    <Kitchen
+    inicial={inicial} />
   </Route>
   <Route path="/roles">
     <Roles />

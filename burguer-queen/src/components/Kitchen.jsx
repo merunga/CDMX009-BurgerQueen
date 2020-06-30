@@ -1,17 +1,16 @@
 import React from 'react'
 import ButtonReturn from './ButtonReturn'
-import { showTables, edit, showInfoTables } from '../controllers'
+import { showTables, edit, editTime, showInfoTables } from '../controllers'
 import Meals from './Meals'
 import ListGroup from 'react-bootstrap/ListGroup'
+import Ready from './Ready'
 
 
-const Kitchen = () => {
+const Kitchen = (props) => {
 
 const[table, setTable]= React.useState([])
 
-
-const[state, setState]=React.useState("Pendiente")
-
+const[state, setState]=React.useState(props.inicial)
 
 
 React.useEffect(()=>{
@@ -29,18 +28,15 @@ React.useEffect(()=>{
         }
       }
       obtenerDatos()
-  
 
 
+     
 
-}, [])
-
-
-
+}, [props.inicial])
 
 const changeState =async(item)=>{
-    
-    try {
+  
+ try {
         const resul = await edit(item.id, "preparando")
            const newState= await showInfoTables(item.id)
            console.log("sttttaaaaaaa" + newState.status)
@@ -52,6 +48,10 @@ const changeState =async(item)=>{
       }
       
 }
+
+
+
+
 
 
     return (
@@ -69,14 +69,19 @@ const changeState =async(item)=>{
                 ids= {item.id} />
 
         {
-        item.status==="preparando"  ?   <button className="btn-success"
+    state==="preparando"  ?   <button className="btn-success"
             
-            > {item.status} </button> :  <button className="btn-warning"
-        onClick={()=>changeState(item)}
-        >{state}</button>
-
-
+            > {state} </button> : console.log("No está preparandose")
 }
+{
+  state==="Enviado a cocina" ? <button className="btn-warning"
+  onClick={()=>changeState(item)}
+  >{state}</button> : console.log("ya se está preparando")
+}
+<Ready
+numbers={item}/>
+
+
               
           </div>
            
