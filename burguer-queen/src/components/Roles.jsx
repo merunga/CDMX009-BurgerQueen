@@ -1,21 +1,22 @@
 import React from 'react'
-import ButtonReturn from './ButtonReturn'
+import waiter from '../imgs/waiter.png'
+import kitchen from '../imgs/kitchen.png'
+import {Container,Row, Col} from 'react-bootstrap'
+import {Link} from "react-router-dom"
 
 const Roles = () => {
     return (
-        <div>
+        
+            
+            <Container className="text-center">
             Quien eres????? meser@ o cocina???
-
-
-            <ButtonReturn 
-            ruta = "/roles/cocina"
-            btnStyles ="btn btn-danger"
-            text = "COCINA"/>
-            <ButtonReturn 
-            ruta = "/roles/piso"
-            btnStyles = "btn btn-warning"
-            text = "PISO"/>
-        </div>
+            <Row>
+              <Col><Link to="/roles/piso"><img src={waiter} className="mx-auto d-block" alt="Mesero"/> </Link></Col>
+              <Col><Link to="/roles/cocina"><img src={kitchen} className="mx-auto d-block" alt="Chef"/></Link></Col>
+            </Row>
+             
+            </Container>
+           
     )
 }
 

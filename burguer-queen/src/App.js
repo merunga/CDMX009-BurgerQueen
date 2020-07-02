@@ -15,11 +15,8 @@ import NewTable from './components/NewTable';
 
 function App() {
 
-  
-  return (
+   return (
     <Router>
-
-   
   <Switch>
   <Route path="/roles/piso/mesaNueva">
     <NewTable />
