@@ -1,13 +1,16 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import ButtonReturn from './ButtonReturn'
-import { showInfoTables } from '../controllers'
+import { showInfoTables,  deleteOrden } from '../controllers'
 import GetCheck from './GetCheck'
+import Floor from './Floor'
 
 const TableStatus = (index) => {
     const { id } = useParams()
     //console.log(id)
     const [dataTable, setDataTable] = React.useState([])
+    const [buttonCheck, setButtonCheck] = React.useState(false)
+   
      React.useEffect( () => {
          
         const getTables =async ()=>{
@@ -27,14 +30,29 @@ const TableStatus = (index) => {
     }, [])
 
 
-    const [buttonCheck, setButtonCheck] = React.useState(false)
+    
 
     const prueba=()=>{
         setButtonCheck(true)
     }
 
+
+    const deletes=async(id)=>{
+        try{
+        await deleteOrden(id)
+            console.log("borrado")
+            
+        }
+        catch(error){
+            console.log(error)
+
+        }
+
+    }
+
     return (
         <div>
+         
         
         {
               
@@ -57,8 +75,9 @@ const TableStatus = (index) => {
                   
 
             <button className="btn btn-danger">Agregar algo a la orden</button>
-            <button className="btn btn-danger">Cerrar mesa</button>
+           
             <button className="btn btn-danger" onClick={()=>prueba()}  >Cuenta</button>
+            <Link to="/roles/piso" className="btn btn-danger" onClick={()=>deletes(id)}> Cerrar Mesa </Link>
             
             <ButtonReturn
             ruta = "/roles/piso"

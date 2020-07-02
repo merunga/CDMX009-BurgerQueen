@@ -4,31 +4,28 @@ import {  editTime, edit } from '../controllers'
 
 const Ready = (props) => {
 
-    
-
 const[isReady, setIsReady]= React.useState(false)
 const[newDate, setNewDate]= React.useState("")
 
-
-
-const ordenReady=async (numbers)=>{
+    const ordenReady=async (numbers)=>{
     let dates = new Date();
-dates += Date.now();
-const date1 = dates.slice(0, 25);
-setNewDate(newDate)
+    dates += Date.now();
+    const date1 = dates.slice(0, 25);
+    setNewDate(date1)
 
-    try {
-        const resul = await edit(numbers.id, "Orden Lista")
-          
-           const getTimeOut = await editTime(numbers.id, newDate)
-          
-           setIsReady(true)
+        try {
+            const resul = await edit(numbers.id, "Orden Lista")
 
-      } catch (error) {
-        console.log(error)
-      }
+               const getTimeOut = await editTime(numbers.id, date1)
 
-}
+               setIsReady(true)
+
+          } catch (error) {
+            console.log(error)
+          }
+
+    }
+
 
 
 
@@ -38,7 +35,8 @@ setNewDate(newDate)
             onClick={()=>ordenReady(props.numbers)}>Lista</button>
 
         {
-            isReady ? console.log("imagennueva"): console.log("imagen vieja ")
+            isReady ? <button className="btn-danger">{newDate}</button>
+            : console.log("imagen vieja ")
         }
 
         </div>

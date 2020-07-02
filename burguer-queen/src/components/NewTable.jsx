@@ -8,7 +8,7 @@ import Form from './Form'
 import CardBurger from './CardBurger'
 import { createTable } from '../controllers';
 
-const NewTable = (props) => {
+const NewTable = () => {
   const [waiter, setWaiter] = React.useState("")
   const [client, setClient] = React.useState("")
   const [table, setTable] = React.useState("")
@@ -26,8 +26,8 @@ const NewTable = (props) => {
     setCartDinner(false)
   }
 
-  const addElement = async (setInicial) => {
-    //e.preventDefault()
+  const addElement = async (e) => {
+    e.preventDefault()
     setCardBreacfast(false)
     setCartDinner(false)
 
@@ -37,7 +37,7 @@ const NewTable = (props) => {
     }
 
     try {
-      const data = await createTable({ client, employ:waiter, number: table, orden, price, date, status:"Enviado a cocina" });
+      const data = await createTable({ client, employ:waiter, number: table, orden, price, date });
       console.log(data)
       setClient('')
       setTable('')
@@ -48,17 +48,11 @@ const NewTable = (props) => {
       
       console.log("se guardó en bd")
 
-      
-      setInicial("Enviado a cocina")
-      //console.log(status)
-
     } catch (error) {
       console.log(error)
     }
 
     console.log("yeah")
-
-    
 
   }
 
@@ -151,7 +145,7 @@ const addSomething =(item)=>{
         text="Ver Mesas"
       />
       <button className="btn btn-warning"
-        onClick={()=>addElement(props.setInicial)}>Enviar orden </button>
+        onClick={addElement}>Enviar orden </button>
 
     </div>
   )
