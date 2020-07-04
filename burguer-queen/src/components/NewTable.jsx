@@ -6,7 +6,8 @@ import { breackfast, burgersTime } from '../utils/menus.js'
 import ImgMenus from './ImgMenus'
 import Form from './Form'
 import CardBurger from './CardBurger'
-import { createTable } from '../controllers';
+import { createTable } from '../controllers'
+import { Container,Row, Col } from 'react-bootstrap'
 
 const NewTable = () => {
   const [waiter, setWaiter] = React.useState("")
@@ -74,7 +75,9 @@ const NewTable = () => {
 
   const cartAMostrar = ((cartDinner && burgersTime) || (cardBreakfast && breackfast));
   return (
+    
     <div className="text-center">
+   
       <ul className="mt-5 ml-5 mr-5">
         <Form
           types="text"
@@ -91,28 +94,41 @@ const NewTable = () => {
           changeAction={e => setTable(e.target.value)}
           val={table} />
       </ul>
+      <ButtonReturn
+      ruta="/roles/piso"
+      btnStyles="btn btn-warning"
+      text="Ver Mesas"/>
+      <div>
+      <Row>
+      <Col><ImgMenus
+      src={burgerTime}
+      action={showDinnerOrBreakfast(true)} />
+      </Col>
+      <Col>
       <ImgMenus
-        src={burgerTime}
-        action={showDinnerOrBreakfast(true)} />
-      <ImgMenus
-        src={breakfast}
-        action={showDinnerOrBreakfast(false)} />
+      src={breakfast}
+      action={showDinnerOrBreakfast(false)} />
+      </Col>
+      </Row>     
+      </div>
       <div>
         {(!cartAMostrar) && (
           <img src="https://http2.mlstatic.com/gato-persa-busca-novia-libre-de-pkd-gatitos-disponibles-D_NQ_NP_862913-MLM31839317244_082019-O.webp" alt="" className="btn"
             onClick={prueba} />
         )}
-        {cartAMostrar && cartAMostrar.map(item => (
-          <div key={item.id}>
-            <CardBurger element={item.product} price={item.precio} addToMenu={() => addSomething(item)} />
-          </div>
+        <Container>
+        <Row>
+        <Col className="md-6">{cartAMostrar && cartAMostrar.map(item => (
+        <CardBurger  key={item.id} element={item.product} price={item.precio} addToMenu={() => addSomething(item)}/>                   
         ))}
+        </Col>
+        <Col>
+         Holaaaa
+        </Col>
+        </Row>
+        </Container>
       </div>
-      <ButtonReturn
-        ruta="/roles/piso"
-        btnStyles="btn btn-warning"
-        text="Ver Mesas"
-      />
+     
       <button className="btn btn-warning"
         onClick={addElement}>Enviar orden </button>
     </div>
