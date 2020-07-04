@@ -1,7 +1,8 @@
 import React from 'react'
 import ButtonReturn from './ButtonReturn'
 import { Link } from "react-router-dom"
-import { showTables } from '../controllers'
+import { showTables2 } from '../controllers'
+import iconTable from '../imgs/iconTable.png'
 
 const Floor = () => {
 
@@ -9,17 +10,16 @@ const Floor = () => {
 
   React.useEffect(() => {
 
-    const obtenerDatos = async () => {
-      try {
-        const resul = await showTables()
-        setMesa(resul)
+    const cb = (result) => {
+      setMesa(result)
 
-      } catch (error) {
-        console.log(error)
-      }
     }
-    obtenerDatos()
-
+    const unsubscribe = showTables2(cb)
+    // return unsubscribe
+    return () => {
+      console.log('desmontando compornete Floor')
+      unsubscribe();
+    }
   }, [])
 
   return (
@@ -31,18 +31,24 @@ const Floor = () => {
 
       {
         mesa.map(item => (
-          <p key={item.id}>
-            <Link to={`/roles/piso/${item.id}`} className="btn btn-outline-warning btn-lg btn-block">
-              {item.number}
+          <div key={item.id}>
+            <Link to={`/roles/piso/${item.id}`} className="btn">
+            <h2 className= "text-warning">{item.number}</h2> <img src ={iconTable}  className="mx-auto d-block" alt="Tables"/>
+            <h3 className="text-white">{item.status}</h3>
+
+
             </Link>
-          </p>
+
+
+          </div>
         ))
       }
+
       <ButtonReturn
         ruta="/roles"
         btnStyles="btn btn-dark"
         text="Regresar" />
-      <hr />
+      
       <ButtonReturn
         ruta="/roles/piso/mesaNueva"
         btnStyles="btn btn-warning"

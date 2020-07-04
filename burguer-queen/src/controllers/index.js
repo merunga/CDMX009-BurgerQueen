@@ -1,44 +1,61 @@
 import { firebase } from '../components/firebase'
+const moment = require('moment')
+
 
 export const createTable = async (element) => {
+  let dates = moment(new Date())
+  let dateIni= (dates.hour()*60) + dates.minute();
   console.log('element', element)
   const db = firebase.firestore();
   const newTable = {
     ...element,
 
     status: "Enviado a cocina",
-
     timeOut: "",
-    //total: element.orden,
-    //price: element.price
+    timePrep: dateIni,
+    timeFinal: ""
+
   }
   console.log(newTable)
   return db.collection('tables').add(newTable)
 }
 
-export const showTables = async()=>{
-  const db = firebase.firestore()
-  const data = await db.collection('tables').orderBy('date', 'asc').get()
-  const arrayData= data.docs.map(doc=>({id : doc.id, ...doc.data()}))
-  console.log(arrayData)
-  return arrayData
-}
-
-
-//export const showTables = ()=>{
+//export const showTables = async()=>{
 //  const db = firebase.firestore()
-//db.collection("tables")
-//    .onSnapshot(function(querySnapshot) {
-//    const cities=[]
-//    querySnapshot.forEach(function(doc) {
-//      cities.push(doc.data());
-//
-//        //console.log("Current cities in CA: ", cities.join(", "));
-//        return cities
-//    });
-//  });
-//  }
+//  const data = await db.collection('tables').orderBy('date', 'asc').get()
+//  const arrayData= data.docs.map(doc=>({id : doc.id, ...doc.data()}))
+//  console.log(arrayData)
+//  return arrayData
+//} 
 
+export const showTables2 = (cb)=>{
+const db = firebase.firestore()
+ return  db.collection("tables").orderBy("date", "asc").onSnapshot(function(querySnapshot) {
+     const result = []
+          querySnapshot.forEach(function(doc) {
+          let arrayData =  {id : doc.id, ...doc.data()}
+          console.log (arrayData)
+          result.push( arrayData)
+          
+           
+        });
+        
+      cb(result)
+    });
+   
+  }
+ 
+  export const showInfoTables2 = (cb,id)=>{
+        const db = firebase.firestore()
+    return  db.collection("tables").doc(id).onSnapshot(function(doc) {
+      const result = doc.data()
+ 
+   cb(result)
+         });
+     
+     
+  }
+  
 
 
 export const showInfoTables = async(id)=>{
@@ -51,7 +68,6 @@ export const showInfoTables = async(id)=>{
     return console.log("No such document!");
 
   }
-
 }
 
 
@@ -68,14 +84,30 @@ export const edit = async (id, tarea) => {
      const db = firebase.firestore()
     await db.collection('tables').doc(id).update({
       timeOut: tarea
+
     })
+    
+  } 
+  export const editTimeFinal= async (id, tarea) => {
+    const db = firebase.firestore()
+   await db.collection('tables').doc(id).update({
+     timeFinal: tarea
 
-  }
-
-
+   })
+   
+ }
+  
   
   export const deleteOrden = async (id) => {
     const db = firebase.firestore()
-   await db.collection('tables').doc(id).delete()
-
- }
+    await db.collection('tables').doc(id).delete()
+    
+  }
+      export const addMoreElements = async (id, product, price) => {
+        const db = firebase.firestore()
+       await db.collection('tables').doc(id).update({
+         orden: product,
+         price: price
+       })
+       
+     }
