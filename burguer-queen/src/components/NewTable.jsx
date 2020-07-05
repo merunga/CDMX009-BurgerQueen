@@ -64,7 +64,7 @@ const NewTable = () => {
     const targ2 = (item.precio)
     newarray.push(targ)
     setOrden([...orden, ...newarray])
-    console.log(setOrden)
+    console.log(orden)
     arrayTotal.push(targ2)
     setPrice([...price, ...arrayTotal])
     let dates = new Date();
@@ -75,8 +75,7 @@ const NewTable = () => {
 
   const cartAMostrar = ((cartDinner && burgersTime) || (cardBreakfast && breackfast));
   return (
-    
-    <div className="text-center">
+        <div className="text-center">
    
       <ul className="mt-5 ml-5 mr-5">
         <Form
@@ -124,6 +123,7 @@ const NewTable = () => {
         </Col>
         <Col>
          Holaaaa
+          
         </Col>
         </Row>
         </Container>
