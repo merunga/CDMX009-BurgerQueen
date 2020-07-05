@@ -1,22 +1,29 @@
 import React from 'react'
 import breakfast from '../imgs/breakfast.png'
 import burgerTime from '../imgs/burgerTime.svg'
+import iconDelete from '../imgs/iconDelete.png'
 import ButtonReturn from './ButtonReturn'
 import { breackfast, burgersTime } from '../utils/menus.js'
 import ImgMenus from './ImgMenus'
 import Form from './Form'
 import CardBurger from './CardBurger'
-import { createTable } from '../controllers';
+import { createTable } from '../controllers'
+import { Container,Row, Col } from 'react-bootstrap'
+import PreViewOrder from './PreViewOrder'
+import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
 
-const NewTable = () => {
+const NewTable = (props) => {
   const [waiter, setWaiter] = React.useState("")
   const [client, setClient] = React.useState("")
   const [table, setTable] = React.useState("")
   const [cartDinner, setCartDinner] = React.useState(false)
   const [cardBreakfast, setCardBreacfast] = React.useState(false)
-  const [orden, setOrden] = React.useState([])
-  const [price, setPrice] = React.useState([])
+  
+ 
   const [date, setDate] = React.useState("")
+
+  const[real, setReal]=React.useState(false)
 
   const prueba = () => {
     console.log("jjjjjjjj no sabemos que pedou")
@@ -33,13 +40,13 @@ const NewTable = () => {
       return
     }
     try {
-      const data = await createTable({ client, employ: waiter, number: table, orden, price, date });
+      const data = await createTable({ client, employ: waiter, number: table, orden:props.orden, date });
       console.log(data)
       setClient('')
       setTable('')
       setWaiter('')
-      setOrden([])
-      setPrice([])
+      props.setOrden([])
+      
       console.log("se guardó en bd")
     } catch (error) {
       console.log(error)
@@ -60,21 +67,31 @@ const NewTable = () => {
       precio: item.precio,
       id: item.id,
     }
-    const targ2 = (item.precio)
+    
     newarray.push(targ)
-    setOrden([...orden, ...newarray])
-    console.log(setOrden)
-    arrayTotal.push(targ2)
-    setPrice([...price, ...arrayTotal])
+    props.setOrden([...props.orden, ...newarray])
+    console.log(props.orden)
+    setReal(true)
+   
+    
     let dates = new Date();
     dates += Date.now();
     const date1 = dates.slice(0, 25);
     setDate(date1)
   }
 
+  const deleteItem =(id, orden) =>{
+    console.log("voy a borrar")
+    const arrayFiltrado = orden.filter(item => item.id !== id)
+    props.setOrden(arrayFiltrado)
+    
+  }
+
   const cartAMostrar = ((cartDinner && burgersTime) || (cardBreakfast && breackfast));
   return (
+    
     <div className="text-center">
+   
       <ul className="mt-5 ml-5 mr-5">
         <Form
           types="text"
@@ -91,30 +108,61 @@ const NewTable = () => {
           changeAction={e => setTable(e.target.value)}
           val={table} />
       </ul>
+      <ButtonReturn
+      ruta="/roles/piso"
+      btnStyles="btn btn-warning"
+      text="Ver Mesas"/>
+      <div>
+      <Row>
+      <Col><ImgMenus
+      src={burgerTime}
+      action={showDinnerOrBreakfast(true)} />
+      </Col>
+      <Col>
       <ImgMenus
-        src={burgerTime}
-        action={showDinnerOrBreakfast(true)} />
-      <ImgMenus
-        src={breakfast}
-        action={showDinnerOrBreakfast(false)} />
+      src={breakfast}
+      action={showDinnerOrBreakfast(false)} />
+      </Col>
+      </Row>     
+      </div>
       <div>
         {(!cartAMostrar) && (
           <img src="https://http2.mlstatic.com/gato-persa-busca-novia-libre-de-pkd-gatitos-disponibles-D_NQ_NP_862913-MLM31839317244_082019-O.webp" alt="" className="btn"
             onClick={prueba} />
         )}
-        {cartAMostrar && cartAMostrar.map(item => (
-          <div key={item.id}>
-            <CardBurger element={item.product} price={item.precio} addToMenu={() => addSomething(item)} />
-          </div>
+        <Container>
+        <Row>
+        <Col className="md-6">{cartAMostrar && cartAMostrar.map(item => (
+        <CardBurger  key={item.id} element={item.product} price={item.precio} addToMenu={() => addSomething(item)}/>                   
         ))}
-      </div>
-      <ButtonReturn
-        ruta="/roles/piso"
-        btnStyles="btn btn-warning"
-        text="Ver Mesas"
-      />
-      <button className="btn btn-warning"
+        </Col>
+        <Col >
+         <PreViewOrder/>
+{real&&
+         <Card className= "center-block" style={{ width: '18rem' }}>
+  <Card.Header>Alimentos Añadidos </Card.Header>
+  <ListGroup variant="flush">
+  {real&& <div className="text-dark font-weight-bold">{props.orden.map(items=>(
+          <ListGroup.Item key={items.id}>{items.producto}<img src= {iconDelete} width="25" height="25" onClick={()=> deleteItem(items.id, props.orden)}/> </ListGroup.Item>
+        ))}</div>
+       }
+
+   
+  </ListGroup>
+  <button className="btn btn-warning"
         onClick={addElement}>Enviar orden </button>
+</Card>
+}
+
+
+
+       
+        </Col>
+        </Row>
+        </Container>
+      </div>
+     
+      
     </div>
   )
 }

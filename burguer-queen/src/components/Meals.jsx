@@ -21,7 +21,7 @@ const [order, setOrder] = React.useState([])
   }, [])
 
   return (
-    <div>
+    <div className="mx-auto d-block">
       <Card style={{ width: '18rem' }}>
         <ListGroup variant="flush">
           <ListGroup.Item className="font-weight-bold"> <h2>Pedidos </h2>

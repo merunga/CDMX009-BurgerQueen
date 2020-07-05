@@ -3,11 +3,11 @@ import { editTime, edit, editTimeFinal } from '../controllers'
 const moment = require('moment')
 
 const Ready = (props) => {
-    
+
     const ordenReady = async (numbers) => {
         let dateOne = new Date();
         let dates = moment(new Date())
-        let dateFish= (dates.hour()*60) + dates.minute();   
+        let dateFish= (dates.hour()*60) + dates.minute();
         let cookingTime =  (dateFish - numbers.timePrep)
         try {
             const resul = await edit(numbers.id, "Orden Lista")

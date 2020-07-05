@@ -3,6 +3,7 @@ import ButtonReturn from './ButtonReturn'
 import { showTables2, edit, showInfoTables } from '../controllers'
 import Meals from './Meals'
 import Ready from './Ready'
+import { Container } from 'react-bootstrap'
 
 const Kitchen = () => {
   const [table, setTable] = React.useState([])
@@ -29,11 +30,11 @@ const Kitchen = () => {
   }
 
   return (
-    <div>
-      <h1 className="text-danger"> Ordenes por preparar </h1>
-      {
+    <Container className="mx-auto d-block ">
+      <h1 className="text-danger mt-5"> Ordenes por preparar </h1>
+      { 
         table.map(item => (
-          <div key={item.id} className="text-warning">
+          <div  key={item.id} className="text-warning mx-auto d-block">
             {item.status === "Enviado a cocina" &&
               <Meals
                 date={item.date}
@@ -79,7 +80,7 @@ const Kitchen = () => {
         ruta="/roles"
         btnStyles="btn btn-secondary"
         text="Regresar" />
-    </div>
+    </Container>
 
   )
 }

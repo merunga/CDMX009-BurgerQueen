@@ -5,6 +5,8 @@ import { showInfoTables2, deleteOrden, edit, editTime } from '../controllers'
 import GetCheck from './GetCheck'
 import AddMore from './AddMore'
 import { Container } from 'react-bootstrap'
+import back from '../imgs/back.jpg'
+import Card from 'react-bootstrap/Card'
 
 
 const TableStatus = (index) => {
@@ -65,23 +67,37 @@ const TableStatus = (index) => {
                 <button className="btn btn-danger" onClick={() => showMenu()}>Agregar algo a la orden</button>
                 <Link to="/roles/piso" className="btn btn-danger" onClick={() => deletes(id)}> Cerrar Mesa </Link>
                 <button className="btn btn-danger" onClick={() => prueba()}>Cuenta</button>
+                <ButtonReturn
+                ruta="/roles/piso"
+                btnStyles="btn btn-warning"
+                text="Ver Mesas" />
             </nav>
             {
                 <div
                     key={index}>
-                    <h1>Mesa: <span className="badge badge-dark">{dataTable.number}</span></h1>
-                    <h4>Cliente: <span className="badge badge-dark">{dataTable.client}</span></h4>
-                    <h4>Meser@: <span className="badge badge-dark">{dataTable.employ}</span></h4>
-                    <h4>Estatus: <span className="badge badge-dark">{dataTable.status}</span></h4>
-                    <h4>Tiempo de preparación: <span className="badge badge-dark">{dataTable.timeFinal}</span></h4>
+                    
+
+                    <Card className="bg-dark text-white">
+  <Card.Img src={back} alt="Card image" width="34" height="436"/>
+  <Card.ImgOverlay>
+    <h1 className= "text-dark text-center">Status Mesa: {dataTable.number} </h1>
+    <Card.Body className= "text-dark text-center">
+    <h4>Cliente: {dataTable.client}</h4>
+                    <h4>Meser@: {dataTable.employ}</h4>
+                    <h4 className= "text-danger text-center">Estatus: {dataTable.status}</h4>
+                    <h4>Tiempo de preparación: {dataTable.timeFinal} min </h4> <br/>
                     <button className="btn btn-success" onClick={() => orderDeliver(id)}>Entregar orden</button>
-                    <br />
+    </Card.Body>
+    
+  </Card.ImgOverlay>
+</Card>
+
+<br></br><br></br><br></br>
+
                 </div>
+               
             }
-            <ButtonReturn
-                ruta="/roles/piso"
-                btnStyles="btn btn-warning"
-                text="Ver Mesas" />
+            
             {
                 buttonCheck ? <GetCheck /> : console.log("es falso")
             }

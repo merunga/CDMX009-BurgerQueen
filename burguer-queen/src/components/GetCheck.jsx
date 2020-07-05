@@ -15,10 +15,15 @@ const GetCheck = (index) => {
       try {
         const resul = await showInfoTables(id)
         setTotal(resul)
-        console.log("chido" + resul.price)
-        const products = resul.orden
+        //console.log("chido" + resul.orden.precio)
+        
+        const totalPrice= resul.orden.map(item=> item.precio)
+        console.log(totalPrice)
+       const products = resul.orden
+       
+      
         setFinalOrder(products)
-        let priceTotal = resul.price.reduce((a, b) => a + b, 0);
+        let priceTotal = totalPrice.reduce((a, b) => a + b, 0);
         console.log(priceTotal)
         setSuma(priceTotal)
 

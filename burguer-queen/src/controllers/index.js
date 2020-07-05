@@ -1,7 +1,6 @@
 import { firebase } from '../components/firebase'
 const moment = require('moment')
 
-
 export const createTable = async (element) => {
   let dates = moment(new Date())
   let dateIni= (dates.hour()*60) + dates.minute();
@@ -57,18 +56,17 @@ const db = firebase.firestore()
   }
   
 
+ export const showInfoTables = async(id)=>{
+   const db = firebase.firestore()
+   const docRef = db.collection('tables').doc(id)
+   const info = await docRef.get()
+   if (info.exists){
+     return info.data()
+   }else{
+     return console.log("No such document!");
 
-export const showInfoTables = async(id)=>{
-  const db = firebase.firestore()
-  const docRef = db.collection('tables').doc(id)
-  const info = await docRef.get()
-  if (info.exists){
-    return info.data()
-  }else{
-    return console.log("No such document!");
-
-  }
-}
+   }
+ }
 
 
 
