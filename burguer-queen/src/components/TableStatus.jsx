@@ -1,19 +1,16 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import ButtonReturn from './ButtonReturn'
-import { showInfoTables2, deleteOrden, edit, editTime } from '../controllers'
+import { showInfoTables2, deleteOrden, edit } from '../controllers'
 import GetCheck from './GetCheck'
-import AddMore from './AddMore'
-import { Link } from "react-router-dom"
-import { Container } from 'react-bootstrap'
-
+import { Container, Card } from 'react-bootstrap'
+import back from '../imgs/back.jpg'
 
 const TableStatus = (index) => {
     const { id } = useParams()
     const [dataTable, setDataTable] = React.useState([])
     const [buttonCheck, setButtonCheck] = React.useState(false)
-    const [btnAddFood, setAddFood] = React.useState(false)
-
+   
     React.useEffect(() => {
         const cb = (result) => {
             setDataTable(result)
@@ -26,15 +23,11 @@ const TableStatus = (index) => {
         }
     }, [])
 
-    const prueba = () => {
+    const checkResum = () => {
         setButtonCheck(true)
 
     }
-
-    const showMenu = () => {
-        setAddFood(true)
-
-    }
+ 
 
     const deletes = async (id) => {
         try {
@@ -63,33 +56,44 @@ const TableStatus = (index) => {
     return (      
         <Container className="mx-auto d-block ">
             <nav className="d-inline-flex p-2 bd-highlight mt-5 mx-auto d-block">
-                <button className="btn btn-danger" onClick={() => showMenu()}>Agregar algo a la orden</button>
+              <button className="btn btn-danger" onClick={() => checkResum()}>Cuenta</button>
                 <Link to="/roles/piso" className="btn btn-danger" onClick={() => deletes(id)}> Cerrar Mesa </Link>
-                <button className="btn btn-danger" onClick={() => prueba()}>Cuenta</button>
-            </nav>
-            {
-                <div
-                    key={index}>
-                    <h1>Mesa: <span className="badge badge-dark">{dataTable.number}</span></h1>
-                    <h4>Cliente: <span className="badge badge-dark">{dataTable.client}</span></h4>
-                    <h4>Meser@: <span className="badge badge-dark">{dataTable.employ}</span></h4>
-                    <h4>Estatus: <span className="badge badge-dark">{dataTable.status}</span></h4>
-                    <h4>Tiempo de preparación: <span className="badge badge-dark">{dataTable.timeFinal}</span></h4>
-                    <button className="btn btn-success" onClick={() => orderDeliver(id)}>Entregar orden</button>
-                    <br />
-                </div>
-            }
-            <ButtonReturn
+                <ButtonReturn
                 ruta="/roles/piso"
                 btnStyles="btn btn-warning"
                 text="Ver Mesas" />
+            </nav>
+            
+                <div
+                    key={index}>
+                    
+
+                    <Card className="bg-dark text-white">
+  <Card.Img src={back} alt="Card image" width="34" height="436"/>
+  <Card.ImgOverlay>
+    <h1 className= "text-dark text-center">Status Mesa: {dataTable.number} </h1>
+    <Card.Body className= "text-dark text-center">
+    <h4>Cliente: {dataTable.client}</h4>
+                    <h4>Meser@: {dataTable.employ}</h4>
+                    <h4 className= "text-danger text-center">Estatus: {dataTable.status}</h4>
+                  { dataTable.timeFinal !=="" && <h4 className="text-success">Tiempo de preparación: {dataTable.timeFinal} min </h4> } <br/>
+                  <button className="btn btn-success" onClick={() => orderDeliver(id)}>Entregar orden</button>
+    </Card.Body>
+    
+  </Card.ImgOverlay>
+</Card>
+
+<br></br><br></br><br></br>
+
+                </div>
+               
+            
+            
             {
                 buttonCheck ? <GetCheck /> : console.log("es falso")
             }
 
-            {
-                (btnAddFood) && (<div> <AddMore /></div>)
-            }
+           
         </Container>
     )
 }

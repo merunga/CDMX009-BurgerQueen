@@ -14,12 +14,14 @@ import TableStatus from './components/TableStatus';
 import NewTable from './components/NewTable';
 
 function App() {
-
+  const [orden, setOrden] = React.useState([])
    return (
     <Router>
   <Switch>
   <Route path="/roles/piso/mesaNueva">
-    <NewTable />
+    <NewTable 
+    orden={orden}
+    setOrden={setOrden}/>
   </Route>
   <Route path="/roles/piso/:id">
     <TableStatus />

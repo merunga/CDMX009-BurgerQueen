@@ -1,14 +1,17 @@
+//react-hooks/exhaustive-deps
 import React from 'react'
 import ButtonReturn from './ButtonReturn'
-import { showTables2, edit, showInfoTables } from '../controllers'
+import { showTables2, edit} from '../controllers'
 import Meals from './Meals'
 import Ready from './Ready'
+import { Container } from 'react-bootstrap'
 
 const Kitchen = () => {
   const [table, setTable] = React.useState([])
  React.useEffect(() => {
     const cb = (result) => {
       setTable(result)
+    
     }
     const unsubscribe = showTables2(cb)
     // return unsubscribe
@@ -29,16 +32,17 @@ const Kitchen = () => {
   }
 
   return (
-    <div>
-      <h1 className="text-danger"> Ordenes por preparar </h1>
-      {
+    <Container className="mx-auto d-block ">
+      <h1 className="text-danger mt-5"> Ordenes por preparar </h1>
+      { 
         table.map(item => (
-          <div key={item.id} className="text-warning">
+          <div  key={item.id} className="text-warning mx-auto d-block">
             {item.status === "Enviado a cocina" &&
               <Meals
                 date={item.date}
                 client={item.client}
                 number={item.number}
+                // eslint-disable-next-line react-hooks/exhaustive-deps 
                 ids={item.id}
               />
             }
@@ -60,6 +64,7 @@ const Kitchen = () => {
               item.status === "preparando" && <button className="btn-success"> {item.status} </button>
               //item.status === "preparando" ? <button className="btn-success"> {item.status} </button> : console.log("lista para entregar")     
             }
+
             {
               item.status === "preparando" && <Ready numbers={item} />
               //item.status === "preparando" ? <Ready numbers={item} /> : console.log("yaaaaa")
@@ -78,7 +83,7 @@ const Kitchen = () => {
         ruta="/roles"
         btnStyles="btn btn-secondary"
         text="Regresar" />
-    </div>
+    </Container>
 
   )
 }

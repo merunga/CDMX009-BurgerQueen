@@ -25,7 +25,7 @@ const Floor = () => {
     <div className="text-center">
       <div>
       </div>
-      <h1 className="text-warning">Mesas Activas</h1>
+      <h1 className="text-warning mt-5">Mesas Activas</h1>
       <div>
         <Row>
           <Col> <ButtonReturn

@@ -1,11 +1,11 @@
-import { firebase } from '../components/firebase'
+import { firebase } from './firebase'
 const moment = require('moment')
+const db = firebase.firestore();
 
 export const createTable = async (element) => {
   let dates = moment(new Date())
   let dateIni= (dates.hour()*60) + dates.minute();
   console.log('element', element)
-  const db = firebase.firestore();
   const newTable = {
     ...element,
 
@@ -28,7 +28,7 @@ export const createTable = async (element) => {
 //} 
 
 export const showTables2 = (cb)=>{
-const db = firebase.firestore()
+//const db = firebase.firestore()
  return  db.collection("tables").orderBy("date", "asc").onSnapshot(function(querySnapshot) {
      const result = []
           querySnapshot.forEach(function(doc) {
@@ -45,13 +45,10 @@ const db = firebase.firestore()
   }
  
   export const showInfoTables2 = (cb,id)=>{
-        const db = firebase.firestore()
+  //      const db = firebase.firestore()
     return  db.collection("tables").doc(id).onSnapshot(function(doc) {
       const result = doc.data()
-           
-           
-            
-      
+ 
    cb(result)
          });
      
@@ -60,7 +57,7 @@ const db = firebase.firestore()
   
 
  export const showInfoTables = async(id)=>{
-   const db = firebase.firestore()
+   //const db = firebase.firestore()
    const docRef = db.collection('tables').doc(id)
    const info = await docRef.get()
    if (info.exists){
@@ -74,15 +71,15 @@ const db = firebase.firestore()
 
 
 export const edit = async (id, tarea) => {
-     const db = firebase.firestore()
+     //const db = firebase.firestore()
     await db.collection('tables').doc(id).update({
       status: tarea
     })
-    
+
   } 
 
   export const editTime = async (id, tarea) => {
-     const db = firebase.firestore()
+     //const db = firebase.firestore()
     await db.collection('tables').doc(id).update({
       timeOut: tarea
 
@@ -90,7 +87,7 @@ export const edit = async (id, tarea) => {
     
   } 
   export const editTimeFinal= async (id, tarea) => {
-    const db = firebase.firestore()
+    //const db = firebase.firestore()
    await db.collection('tables').doc(id).update({
      timeFinal: tarea
 
@@ -100,12 +97,12 @@ export const edit = async (id, tarea) => {
   
   
   export const deleteOrden = async (id) => {
-    const db = firebase.firestore()
+    //const db = firebase.firestore()
     await db.collection('tables').doc(id).delete()
     
   }
       export const addMoreElements = async (id, product, price) => {
-        const db = firebase.firestore()
+      //  const db = firebase.firestore()
        await db.collection('tables').doc(id).update({
          orden: product,
          price: price

@@ -10,9 +10,9 @@ const Ready = (props) => {
         let dateFish= (dates.hour()*60) + dates.minute();
         let cookingTime =  (dateFish - numbers.timePrep)
         try {
-            const resul = await edit(numbers.id, "Orden Lista")
-            const getTimeOut = await editTime(numbers.id, dateOne)
-            const getFinalTime = await editTimeFinal(numbers.id, cookingTime)
+            await edit(numbers.id, "Orden Lista")
+            await editTime(numbers.id, dateOne)
+            await editTimeFinal(numbers.id, cookingTime)
         } catch (error) {
             console.log(error)
         }
