@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { showInfoTables } from '../controllers'
 import { useParams } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
@@ -10,6 +10,20 @@ const GetCheck = (index) => {
   const [total, setTotal] = React.useState([])
   const [suma, setSuma] = React.useState(total)
   const [finalOrder, setFinalOrder] = React.useState([])
+
+  let[allproduct,setallproduct]=useState({
+    cliente:"",
+    comida:[],
+    mesero:"",
+    total:0,
+    status:false,
+    pagado:false
+  })
+
+  let addCliete=(nombre)=>{
+    setallproduct({...allproduct, cliente:nombre})
+  }
+
   React.useEffect(() => {
     const obtenerDatos = async () => {
       try {
@@ -51,7 +65,7 @@ const GetCheck = (index) => {
 
           }
 
-          <ListGroup.Item className="text-danger font-weight-bold"> ToTAL: $ {suma}</ListGroup.Item>
+          <ListGroup.Item className="text-danger font-weight-bold"> TOTAL: $ {suma}</ListGroup.Item>
         </ListGroup>
       </Card>
     </Container>
