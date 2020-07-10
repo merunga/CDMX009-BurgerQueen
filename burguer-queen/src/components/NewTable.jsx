@@ -46,6 +46,7 @@ const NewTable = (props) => {
       setTable('')
       setWaiter('')
       props.setOrden([])
+      setReal(false)
       
       console.log("se guardó en bd")
     } catch (error) {
