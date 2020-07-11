@@ -1,6 +1,6 @@
 import React from 'react'
-import waiter from '../imgs/waiter.png'
-import kitchen from '../imgs/kitchen.png'
+import waiter from '../../imgs/waiter.png'
+import kitchen from '../../imgs/kitchen.png'
 import {Container,Row, Col} from 'react-bootstrap'
 import {Link} from "react-router-dom"
 

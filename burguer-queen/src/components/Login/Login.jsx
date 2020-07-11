@@ -1,6 +1,6 @@
 import React from 'react'
-import queen from '../imgs/queen.png'
-import ButtonReturn from './ButtonReturn'
+import queen from '../../imgs/queen.png'
+import ButtonReturn from '../ButtonReturn/ButtonReturn'
 
 const Login = () => {
     return (

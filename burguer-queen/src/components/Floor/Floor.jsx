@@ -1,10 +1,12 @@
 import React from 'react'
-import ButtonReturn from './ButtonReturn'
+import ButtonReturn from '../ButtonReturn/ButtonReturn'
 import { Link } from "react-router-dom"
-import { showTables2 } from '../controllers'
-import iconTable from '../imgs/iconTable.png'
+import { showTables2 } from '../../controllers'
+import iconTable from '../../imgs/iconTable.png'
+import {Row, Col} from 'react-bootstrap'
 
 const Floor = () => {
+
 
   const [mesa, setMesa] = React.useState([])
 
@@ -29,6 +31,16 @@ const Floor = () => {
       </div>
       <h1 className="text-warning">Mesas Activas</h1>
 
+      <Row>
+              <Col><ButtonReturn
+        ruta="/roles"
+        btnStyles="btn btn-dark"
+        text="Regresar" /></Col>
+              <Col> <ButtonReturn
+        ruta="/roles/piso/mesaNueva"
+        btnStyles="btn btn-warning"
+        text="Agregar Mesa" /></Col>
+            </Row>
       {
         mesa.map(item => (
           <div key={item.id}>
@@ -44,15 +56,7 @@ const Floor = () => {
         ))
       }
 
-      <ButtonReturn
-        ruta="/roles"
-        btnStyles="btn btn-dark"
-        text="Regresar" />
-      <hr />
-      <ButtonReturn
-        ruta="/roles/piso/mesaNueva"
-        btnStyles="btn btn-warning"
-        text="Agregar Mesa" />
+      
 
     </div>
   )

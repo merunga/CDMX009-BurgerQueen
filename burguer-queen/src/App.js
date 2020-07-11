@@ -6,12 +6,12 @@ import {
   Route,
  
 } from "react-router-dom"
-import Login from './components/Login';
-import Roles from './components/Roles';
-import Kitchen from './components/Kitchen';
-import Floor from './components/Floor';
-import TableStatus from './components/TableStatus';
-import NewTable from './components/NewTable';
+import Login from './components/Login/Login';
+import Roles from './components/Roles/Roles';
+import Kitchen from './components/Kitchen/Kitchen';
+import Floor from './components/Floor/Floor';
+import TableStatus from './components/TableStatus/TableStatus';
+import NewTable from './components/NewTable/NewTable';
 
 function App() {
   const [orden, setOrden] = React.useState([])

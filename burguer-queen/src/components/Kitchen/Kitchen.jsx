@@ -1,8 +1,9 @@
+//react-hooks/exhaustive-deps
 import React from 'react'
-import ButtonReturn from './ButtonReturn'
-import { showTables2, edit, showInfoTables } from '../controllers'
-import Meals from './Meals'
-import Ready from './Ready'
+import ButtonReturn from '../ButtonReturn/ButtonReturn'
+import { showTables2, edit} from '../../controllers'
+import Meals from '../Meals/Meals'
+import Ready from '../Ready/Ready'
 import { Container } from 'react-bootstrap'
 
 const Kitchen = () => {
@@ -10,6 +11,7 @@ const Kitchen = () => {
  React.useEffect(() => {
     const cb = (result) => {
       setTable(result)
+    
     }
     const unsubscribe = showTables2(cb)
     // return unsubscribe
@@ -40,6 +42,7 @@ const Kitchen = () => {
                 date={item.date}
                 client={item.client}
                 number={item.number}
+                // eslint-disable-next-line react-hooks/exhaustive-deps 
                 ids={item.id}
               />
             }
