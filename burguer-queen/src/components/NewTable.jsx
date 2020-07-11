@@ -161,8 +161,8 @@ const NewTable = (props) => {
                           width="25"
                           height="25"
                           alt=""
-                          onClick={() => deleteItem(items.id, props.orden)}
-                        /></Col>
+                          onClick={() => deleteItem(items.id, props.orden)}/>
+                         </Col>
                         
                           </Row>
                           {(items.producto === "Hamburguesa doble" || items.producto === "Hamburguesa Simple")&&
