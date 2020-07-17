@@ -26,19 +26,13 @@ const [order, setOrder] = React.useState([])
 
   return (
     <div className="mx-auto d-block">
-      <Card style={{ width: "20rem" }}>
-        <Card.Img src={cartKitchen} alt="Card image" />
-        <Card.ImgOverlay>
-          <h3 className="text-dark text-center">Pedidos</h3>
-          <Card.Body className="text-dark text-center">
-            <p>Hora de entrada: {props.date}</p>
-            <Row>
-              <Col>Cliente:{props.client}</Col>
-              <Col xs lg="4">
-                Mesa:{props.number}
-              </Col>
-            </Row>
-            {order.map((item, idx) => (
+      
+      <div className="card bg-light mb-3"  style={{width: "18rem"}}>
+  <div className="card-header">Orden Mesa: {props.number}</div>
+  <div className="card-body">
+    <h5 className="card-title">{props.date}</h5>
+    <h5 className="card-title">Cliente:{props.client}</h5>
+    <div>{order.map((item, idx) => (
               <div key={idx} className="mx-auto d-block">
                 •{item.producto}
                 {(item.producto === "Hamburguesa doble" ||
@@ -46,10 +40,43 @@ const [order, setOrder] = React.useState([])
                   <div>{`(${item.type})`}</div>
                 )}
               </div>
+              
             ))}
-          </Card.Body>
-        </Card.ImgOverlay>
-      </Card>
+            </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
     </div>
   );
 };

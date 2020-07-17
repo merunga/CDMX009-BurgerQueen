@@ -3,7 +3,8 @@ import ButtonReturn from '../ButtonReturn/ButtonReturn'
 import { Link } from "react-router-dom"
 import { showTables2 } from '../../controllers'
 import iconTable from '../../imgs/iconTable.png'
-import {Row, Col} from 'react-bootstrap'
+import {Row, Col, } from 'react-bootstrap'
+import './floor.css';
 
 const Floor = () => {
 
@@ -22,42 +23,48 @@ const Floor = () => {
       console.log('desmontando compornete Floor')
       unsubscribe();
     }
-  }, [])
+     
+  }, []);
 
   return (
 
     <div className="text-center">
-      <div>
-      </div>
-      <h1 className="text-warning">Mesas Activas</h1>
-
       <Row>
-              <Col><ButtonReturn
+        <Col  xs lg="3"> <Row>
+       <nav id="navbar">
+       <ButtonReturn  
         ruta="/roles"
-        btnStyles="btn btn-dark"
-        text="Regresar" /></Col>
-              <Col> <ButtonReturn
+        btnStyles="btn  btn-outline-warning btn-lg btn-block font-weight-bold "
+        text="Roles" />
+               <ButtonReturn
         ruta="/roles/piso/mesaNueva"
-        btnStyles="btn btn-warning"
-        text="Agregar Mesa" /></Col>
-            </Row>
-      {
-        mesa.map(item => (
-          <div key={item.id}>
-            <Link to={`/roles/piso/${item.id}`} className="btn">
-            <h2 className= "text-warning">{item.number}</h2> <img src ={iconTable}  className="mx-auto d-block" alt="Tables"/>
+        btnStyles="btn  btn-outline-warning btn-lg btn-block font-weight-bold " 
+        text="Agregar Mesa" />
+         <ButtonReturn  
+        ruta="/"
+        btnStyles="btn  btn-outline-warning btn-lg btn-block font-weight-bold "
+        text="Inicio" />
+       </nav>
+            </Row></Col>
+           
+    <Col id="activeTables">
+      
+    <h1 className="text-warning" id="titleTables">Mesas Activas</h1>
+      <div data-testid="allClients" id="tables">{
+        mesa.map((item, idx) => (
+          <div  key={item.id}>
+            <Link data-testid={idx} to={`/roles/piso/${item.id}`} className="btn" id={ `${item.id}`}>
+            <h2 className= "text-white">{item.number}</h2> <img src ={iconTable}  className="mx-auto d-block" alt="Tables"/>
             <h3 className="text-white">{item.status}</h3>
-
-
             </Link>
 
 
           </div>
         ))
       }
-
-      
-
+</div>
+</Col> 
+</Row>
     </div>
   )
 }

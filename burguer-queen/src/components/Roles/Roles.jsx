@@ -11,8 +11,8 @@ const Roles = () => {
             <Container className="text-center">
             Quien eres????? meser@ o cocina???
             <Row>
-              <Col><Link to="/roles/piso"><img src={waiter} className="mx-auto d-block" alt="Mesero"/> </Link></Col>
-              <Col><Link to="/roles/cocina"><img src={kitchen} className="mx-auto d-block" alt="Chef"/></Link></Col>
+              <Col><Link to="/roles/piso" data-testid= "Mesero"><img src={waiter} className="mx-auto d-block" alt="Mesero"/> </Link></Col>
+              <Col><Link to="/roles/cocina" data-testid= "Cocinero"><img src={kitchen} className="mx-auto d-block" alt="Chef"/></Link></Col>
             </Row>
              
             </Container>

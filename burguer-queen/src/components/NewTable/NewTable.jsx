@@ -115,10 +115,10 @@ const NewTable = (props) => {
       <div>
         <Row>
           <Col>
-            <ImgMenus src={burgerTime} action={showDinnerOrBreakfast(true)} />
+            <ImgMenus alt="FirstMeal" src={burgerTime} action={showDinnerOrBreakfast(true)} />
           </Col>
           <Col>
-            <ImgMenus src={breakfast} action={showDinnerOrBreakfast(false)} />
+            <ImgMenus alt="SecondMeal"src={breakfast} action={showDinnerOrBreakfast(false)} />
           </Col>
         </Row>
       </div>
@@ -132,7 +132,7 @@ const NewTable = (props) => {
         )}
         <Container>
           <Row>
-            <Col className="md-6">
+            <Col className="md-6" >
               {cartAMostrar &&
                 cartAMostrar.map((item) => (
                   <CardBurger
@@ -152,7 +152,7 @@ const NewTable = (props) => {
                 <Card className="center-block" style={{ width: "18rem" }}>
                   <Card.Header>Alimentos Añadidos </Card.Header>
                   <ListGroup variant="flush">
-                      <div className="text-dark font-weight-bold">
+                      <div className="text-dark font-weight-bold"  >
                         {props.orden.map((items) => (
                           <ListGroup.Item key={items.id}>
                           <Row>

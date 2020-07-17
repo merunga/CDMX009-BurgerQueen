@@ -5,6 +5,7 @@ import { showInfoTables2, deleteOrden, edit } from '../../controllers'
 import GetCheck from '../GetCheck/GetCheck'
 import { Container, Card } from 'react-bootstrap'
 import back from '../../imgs/back.jpg'
+import "./tableStatus.css"
 
 const TableStatus = (index) => {
     const { id } = useParams()
@@ -54,7 +55,7 @@ const TableStatus = (index) => {
     }
 
     return (      
-        <Container className="mx-auto d-block ">
+        <Container id="tableStatus" className="mx-auto d-block ">
             <nav className="d-inline-flex p-2 bd-highlight mt-5 mx-auto d-block">
               <button className="btn btn-danger" onClick={() => checkResum()}>Cuenta</button>
                 <Link to="/roles/piso" className="btn btn-danger" onClick={() => deletes(id)}> Cerrar Mesa </Link>
