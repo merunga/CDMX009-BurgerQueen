@@ -1,10 +1,10 @@
 import React from 'react'
 import { useParams, Link } from 'react-router-dom'
-import ButtonReturn from './ButtonReturn'
-import { showInfoTables2, deleteOrden, edit } from '../controllers'
-import GetCheck from './GetCheck'
+import ButtonReturn from '../ButtonReturn/ButtonReturn'
+import { showInfoTables2, deleteOrden, edit } from '../../controllers'
+import GetCheck from '../GetCheck/GetCheck'
 import { Container, Card } from 'react-bootstrap'
-import back from '../imgs/back.jpg'
+import back from '../../imgs/back.jpg'
 
 const TableStatus = (index) => {
     const { id } = useParams()

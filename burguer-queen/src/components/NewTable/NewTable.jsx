@@ -1,14 +1,14 @@
 import React from "react";
-import breakfast from "../imgs/breakfast.png";
-import burgerTime from "../imgs/burgerTime.svg";
-import iconDelete from "../imgs/iconDelete.png";
-import ButtonReturn from "./ButtonReturn";
-import ImgMenus from "./ImgMenus";
-import Form from "./Form";
-import CardBurger from "./CardBurger";
-import { createTable } from "../controllers";
+import breakfast from "../../imgs/breakfast.png";
+import burgerTime from "../../imgs/burgerTime.svg";
+import iconDelete from "../../imgs/iconDelete.png";
+import ButtonReturn from "../ButtonReturn/ButtonReturn";
+import ImgMenus from "../ImgMenus/ImgMenus";
+import Form from "../Form/Form";
+import CardBurger from "../CardBurger/CardBurger";
+import { createTable } from "../../controllers";
 import { Container, Row, Col, ListGroup, Card } from "react-bootstrap";
-import { breackfast, burgersTime } from "../utils/menus.js";
+import { breackfast, burgersTime } from "../../utils/menus.js";
 const shortid = require("short-id");
 
 const NewTable = (props) => {
@@ -74,6 +74,7 @@ const NewTable = (props) => {
     dates += Date.now();
     const date1 = dates.slice(0, 25);
     setDate(date1);
+
     //}
   };
 
@@ -156,7 +157,7 @@ const NewTable = (props) => {
                           <ListGroup.Item key={items.id}>
                           <Row>
                           <Col>{items.producto}</Col>
-                          <Col xs lg="2"><img
+                          <Col xs lg="2">MENU LATERAL<img
                           src={iconDelete}
                           width="25"
                           height="25"
@@ -169,14 +170,14 @@ const NewTable = (props) => {
                           <p>{`(${items.type})`}</p>
                           }
                             
-                            {" "}
+                            
                           </ListGroup.Item>
                         ))}
                       </div>
                   
                   </ListGroup>
                   <button className="btn btn-warning" onClick={addElement}>
-                    Enviar orden{" "}
+                    Enviar orden
                   </button>
                 </Card>
               )}

@@ -1,11 +1,14 @@
 import React,{useState} from 'react'
-import { showInfoTables } from '../controllers'
+
 import { useParams } from 'react-router-dom'
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import { Container } from 'react-bootstrap'
+import { showInfoTables } from '../../controllers'
 
 const GetCheck = (index) => {
+
+  
   const { id } = useParams()
   const [total, setTotal] = React.useState([])
   const [suma, setSuma] = React.useState(total)

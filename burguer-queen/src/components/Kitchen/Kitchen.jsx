@@ -1,9 +1,9 @@
 //react-hooks/exhaustive-deps
 import React from 'react'
-import ButtonReturn from './ButtonReturn'
-import { showTables2, edit} from '../controllers'
-import Meals from './Meals'
-import Ready from './Ready'
+import ButtonReturn from '../ButtonReturn/ButtonReturn'
+import { showTables2, edit} from '../../controllers'
+import Meals from '../Meals/Meals'
+import Ready from '../Ready/Ready'
 import { Container } from 'react-bootstrap'
 
 const Kitchen = () => {

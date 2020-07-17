@@ -1,26 +1,28 @@
 //react-hooks/exhaustive-deps
-import React from "react";
-import Card from "react-bootstrap/Card";
+import React from 'react'
+import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
+import { showInfoTables } from '../../controllers'
+import cartKitchen from '../../imgs/cartKitchen.jpg'
 import { Row, Col } from "react-bootstrap";
-import { showInfoTables } from "../controllers";
-import cartKitchen from "../imgs/cartKitchen.jpg";
 
 const Meals = (props) => {
-  const [order, setOrder] = React.useState([]);
+const [order, setOrder] = React.useState([])
 
   React.useEffect(() => {
     const obtenerDatos = async () => {
       try {
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        const resul = await showInfoTables(props.ids);
-        const products = resul.orden;
-        setOrder(products);
+        const resul = await showInfoTables(props.ids)
+        const products = resul.orden
+        setOrder(products)
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
-    };
-    obtenerDatos();
-  }, []);
+    }
+    obtenerDatos()
+
+  }, [])
 
   return (
     <div className="mx-auto d-block">
@@ -49,7 +51,7 @@ const Meals = (props) => {
         </Card.ImgOverlay>
       </Card>
     </div>
-  )
-}
+  );
+};
 
-export default Meals;
+export default Meals

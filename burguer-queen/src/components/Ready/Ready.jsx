@@ -1,5 +1,5 @@
 import React from 'react'
-import { editTime, edit, editTimeFinal } from '../controllers'
+import { editTime, edit, editTimeFinal } from '../../controllers'
 const moment = require('moment')
 
 const Ready = (props) => {
