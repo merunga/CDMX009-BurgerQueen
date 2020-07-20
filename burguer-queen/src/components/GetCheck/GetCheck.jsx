@@ -53,7 +53,7 @@ const GetCheck = (index) => {
   }, [])
 
   return (
-    <Container>
+    <Container >
       <Card className="mx-auto d-block" style={{ width: '18rem' }}>
         <ListGroup variant="flush">
           <ListGroup.Item className="font-weight-bold"> <h2>Burger Queen </h2> <p>{total.date}</p>

@@ -1,6 +1,8 @@
 import React from 'react'
-import {DropdownButton, Dropdown} from 'react-bootstrap'
+import {DropdownButton, Dropdown, Container} from 'react-bootstrap'
 const shortid = require('short-id');
+
+const CardBurger = ({element,options,price,addToMenu, newarray, setOrden}) => {
 
 const addToMenuType = ({
   element, 
@@ -21,14 +23,16 @@ const addToMenuType = ({
   newarray.push(targ)
   setOrden(previousOrden => [...previousOrden, ...newarray])
   console.log(newarray)
+  return newarray
 }
 }
 
-const CardBurger = ({element,options,price,addToMenu, newarray, setOrden, orden}) => {
+
   return (
-    <div className="card" >
+    <Container data-testid="cardOrden">
+          <div className="card" >
       <div className="card-body">
-        <h5 className="card-title">{element}</h5>       
+        <h5 className="card-title" >{element}</h5>       
         {(element === "Hamburguesa Simple" || element=== "Hamburguesa doble") &&
             <div key={shortid.generate()} >
               <DropdownButton id="dropdown-basic-button" title="Opciones">
@@ -55,6 +59,8 @@ const CardBurger = ({element,options,price,addToMenu, newarray, setOrden, orden}
           onClick={addToMenu}>Añadir al menu </button>}
       </div>
     </div>
+    </Container>
+
 
   )
 }

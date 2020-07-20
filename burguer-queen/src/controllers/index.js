@@ -33,7 +33,7 @@ export const showTables2 = (cb)=>{
      const result = []
           querySnapshot.forEach(function(doc) {
           let arrayData =  {id : doc.id, ...doc.data()}
-          console.log (arrayData)
+         // console.log (arrayData)
           result.push( arrayData)
           
            

@@ -5,6 +5,9 @@ import { showTables2, edit} from '../../controllers'
 import Meals from '../Meals/Meals'
 import Ready from '../Ready/Ready'
 import { Container } from 'react-bootstrap'
+import './kitchen.css';
+
+
 
 const Kitchen = () => {
   const [table, setTable] = React.useState([])
@@ -32,11 +35,17 @@ const Kitchen = () => {
   }
 
   return (
-    <Container className="mx-auto d-block ">
+    <Container >
+        <ButtonReturn
+        ruta="/roles"
+        btnStyles="btn btn-secondary"
+        text="Regresar" />
       <h1 className="text-danger mt-5"> Ordenes por preparar </h1>
+    
+      <div id="cardOrders">
       { 
         table.map(item => (
-          <div  key={item.id} className="text-warning mx-auto d-block">
+          <div id="oneOrder" key={item.id} >
             {item.status === "Enviado a cocina" &&
               <Meals
                 date={item.date}
@@ -69,20 +78,15 @@ const Kitchen = () => {
               item.status === "preparando" && <Ready numbers={item} />
               //item.status === "preparando" ? <Ready numbers={item} /> : console.log("yaaaaa")
             }
-            {
-              //item.status ==="Orden Lista" && <TimeOut newDate={item.timeOut} />
-              //item.status === "Orden Lista" ? <TimeOut newDate={item.timeOut} /> : console.log("creoooo que ya")
-            }
+          
             
           </div>
 
         ))
       }
+      </div>
 
-      <ButtonReturn
-        ruta="/roles"
-        btnStyles="btn btn-secondary"
-        text="Regresar" />
+  
     </Container>
 
   )

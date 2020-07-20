@@ -1,16 +1,16 @@
 import React from 'react'
 import { useParams, Link } from 'react-router-dom'
-import ButtonReturn from '../ButtonReturn/ButtonReturn'
 import { showInfoTables2, deleteOrden, edit } from '../../controllers'
 import GetCheck from '../GetCheck/GetCheck'
-import { Container, Card } from 'react-bootstrap'
-import back from '../../imgs/back.jpg'
+import { Container, Navbar, Row, Col } from 'react-bootstrap'
+import burgerStatus from '../../imgs/burgerStatus.svg'
+import "./tableStatus.css"
 
 const TableStatus = (index) => {
     const { id } = useParams()
     const [dataTable, setDataTable] = React.useState([])
     const [buttonCheck, setButtonCheck] = React.useState(false)
-   
+
     React.useEffect(() => {
         const cb = (result) => {
             setDataTable(result)
@@ -27,7 +27,7 @@ const TableStatus = (index) => {
         setButtonCheck(true)
 
     }
- 
+
 
     const deletes = async (id) => {
         try {
@@ -53,47 +53,53 @@ const TableStatus = (index) => {
         }
     }
 
-    return (      
-        <Container className="mx-auto d-block ">
-            <nav className="d-inline-flex p-2 bd-highlight mt-5 mx-auto d-block">
-              <button className="btn btn-danger" onClick={() => checkResum()}>Cuenta</button>
-                <Link to="/roles/piso" className="btn btn-danger" onClick={() => deletes(id)}> Cerrar Mesa </Link>
-                <ButtonReturn
-                ruta="/roles/piso"
-                btnStyles="btn btn-warning"
-                text="Ver Mesas" />
-            </nav>
-            
-                <div
-                    key={index}>
-                    
+    return (
+        <Container>
+            <Navbar>
+                <Navbar.Collapse className="justify-content-center">
+                    <Navbar.Brand>
+                        <button className="btn" id="btns" onClick={() => checkResum()}>Cuenta</button>
+                    </Navbar.Brand>
+                    <Navbar.Toggle />
+                    <Navbar.Brand>
+                        <Link to="/roles/piso" className="btn" id="btns" onClick={() => deletes(id)}> Cerrar Mesa </Link>
+                    </Navbar.Brand>
+                    <Navbar.Toggle />
+                    <Navbar.Brand>
+                        <Link to="/roles/piso" className="btn" id="btnDeliver"> Ver Mesas </Link>
+                    </Navbar.Brand>
+                    <Navbar.Toggle />
+                </Navbar.Collapse>
+            </Navbar>
 
-                    <Card className="bg-dark text-white">
-  <Card.Img src={back} alt="Card image" width="34" height="436"/>
-  <Card.ImgOverlay>
-    <h1 className= "text-dark text-center">Status Mesa: {dataTable.number} </h1>
-    <Card.Body className= "text-dark text-center">
-    <h4>Cliente: {dataTable.client}</h4>
-                    <h4>Meser@: {dataTable.employ}</h4>
-                    <h4 className= "text-danger text-center">Estatus: {dataTable.status}</h4>
-                  { dataTable.timeFinal !=="" && <h4 className="text-success">Tiempo de preparación: {dataTable.timeFinal} min </h4> } <br/>
-                  <button className="btn btn-success" onClick={() => orderDeliver(id)}>Entregar orden</button>
-    </Card.Body>
-    
-  </Card.ImgOverlay>
-</Card>
+            <Container key={index}>
+                <Row>
+                    <Col className="styleCol" xs lg="5">
+                        <img src={burgerStatus} alt="statusImg" />
+                    </Col>
+                    <Col className="styleCol1">
+                        <br></br>
+                        <h1 className="text-center"> Mesa: {dataTable.number} </h1>
+                        <h3>Cliente: {dataTable.client}</h3>
+                        <h3>Meser@: {dataTable.employ}</h3>
+                        <h3>Estatus: {dataTable.status}</h3>
+                        {dataTable.timeFinal !== "" && <h3>Tiempo transcurrido: {dataTable.timeFinal} min </h3>} <br />
+                        {
+                         dataTable.status === "Orden Lista" &&  
+                        <button className="mx-auto d-block" id="btnDeliver" onClick={() => orderDeliver(id)}>Entregar orden</button>
+                        }
 
-<br></br><br></br><br></br>
+                    </Col>
+                </Row>
 
-                </div>
-               
-            
-            
+            </Container>
+            <br></br><br></br>
+
             {
                 buttonCheck ? <GetCheck /> : console.log("es falso")
             }
 
-           
+
         </Container>
     )
 }

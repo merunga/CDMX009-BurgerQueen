@@ -1,0 +1,39 @@
+.body{
+    font-family: Roboto;
+}
+.styleCol{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+       
+}
+.styleCol1{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    color: white;
+    font-family: Roboto;
+    font-size: 25px;
+   
+}
+
+#btns{
+width: 200px;
+height: 50px;
+background: #EBE8E8;
+border-radius: 15px;
+font-family: Roboto;
+font-size: 25px;
+
+}
+
+#btnDeliver{
+width: 250px;
+height: 50px;
+background: #6FCE91;
+border-radius: 15px;
+font-family: Roboto;
+font-size: 25px;
+
+}
+
