@@ -27,7 +27,7 @@ const Kitchen = () => {
 
   const changeState = async (item) => {
     try {
-      const resul = await edit(item.id, "preparando")
+      const resul = await edit(item.id, "Preparando")
       return resul
     } catch (error) {
       console.log(error)
@@ -38,9 +38,9 @@ const Kitchen = () => {
     <Container >
         <ButtonReturn
         ruta="/roles"
-        btnStyles="btn btn-secondary"
+        btnStyles="btn return"
         text="Regresar" />
-      <h1 className="text-danger mt-5"> Ordenes por preparar </h1>
+      <h1 className="text-white mt-5"> Ordenes por preparar </h1>
     
       <div id="cardOrders">
       { 
@@ -64,13 +64,13 @@ const Kitchen = () => {
               />
             }
             {
-              item.status === "Enviado a cocina" && <button className="btn-warning" onClick={() => changeState(item)}>{item.status}</button>
+              item.status === "Enviado a cocina" && <button className="btn buttons inKitchen" onClick={() => changeState(item)}>{item.status}</button>
               //item.status === "Enviado a cocina" ? <button className="btn-warning"
               // onClick={() => changeState(item)}>{state}</button>
               //   : console.log("acaba de llegar")
             }
             {
-              item.status === "preparando" && <button className="btn-success"> {item.status} </button>
+              item.status === "preparando" && <button className="btn buttons inProcess "> {item.status} </button>
               //item.status === "preparando" ? <button className="btn-success"> {item.status} </button> : console.log("lista para entregar")     
             }
 

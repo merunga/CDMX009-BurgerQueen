@@ -18,7 +18,7 @@ test('test Function showTables2', async() => {
  
 //
 it ("displays initial clients", async  ()  =>  {
-  const { getByTestId } = render(<BrowserRouter><Floor /></BrowserRouter>);
+  const { getByTestId } = render(<BrowserRouter>  <Floor/> </BrowserRouter>);
 let  todos = getByTestId("allClients");
   expect(todos.children.length).toBe(0);
 

@@ -2,6 +2,7 @@ import React from "react";
 import breakfast from "../../imgs/breakfast.png";
 import burgerTime from "../../imgs/burgerTime.svg";
 import iconDelete from "../../imgs/iconDelete.png";
+import hamburger from "../../imgs/hamburger.png";
 import ButtonReturn from "../ButtonReturn/ButtonReturn";
 import ImgMenus from "../ImgMenus/ImgMenus";
 import Form from "../Form/Form";
@@ -9,6 +10,8 @@ import CardBurger from "../CardBurger/CardBurger";
 import { createTable } from "../../controllers";
 import { Container, Row, Col, ListGroup, Card } from "react-bootstrap";
 import { breackfast, burgersTime } from "../../utils/menus.js";
+import './newTable.css';
+
 const shortid = require("short-id");
 
 const NewTable = (props) => {
@@ -88,7 +91,7 @@ const NewTable = (props) => {
     (cartDinner && burgersTime) || (cardBreakfast && breackfast);
   return (
     <div className="text-center">
-      <ul className="mt-5 ml-5 mr-5">
+      <ul className="mt-5 ml-5 mr-5 mx-auto d-block">
         <Form
           types="text"
           text="Meser@"
@@ -107,32 +110,35 @@ const NewTable = (props) => {
           val={table}
         />
       </ul>
-      <ButtonReturn
-        ruta="/roles/piso"
-        btnStyles="btn btn-warning"
-        text="Ver Mesas"
-      />
+     
       <div>
-        <Row>
+        <Row  className="navButtons">
           <Col>
-            <ImgMenus alt="FirstMeal" src={burgerTime} action={showDinnerOrBreakfast(true)} />
+            <button alt="FirstMeal" className="btn btn-meal" onClick={showDinnerOrBreakfast(true)}>Comidas</button> 
           </Col>
           <Col>
-            <ImgMenus alt="SecondMeal"src={breakfast} action={showDinnerOrBreakfast(false)} />
+            <button alt="SecondMeal" className="btn btn-meal" onClick={showDinnerOrBreakfast(false)}>Desayunos</button> 
+          </Col>
+          <Col>
+          <ButtonReturn
+        ruta="/roles/piso"
+        btnStyles="btn buttonReturn"
+        text="Ver Mesas"
+      />
           </Col>
         </Row>
       </div>
       <div>
         {!cartAMostrar && (
           <img
-            src="https://http2.mlstatic.com/gato-persa-busca-novia-libre-de-pkd-gatitos-disponibles-D_NQ_NP_862913-MLM31839317244_082019-O.webp"
+            src={hamburger}
             alt=""
             className="btn"
           />
         )}
         <Container>
           <Row>
-            <Col className="md-6" >
+            <Col className="fixSize md-6" >
               {cartAMostrar &&
                 cartAMostrar.map((item) => (
                   <CardBurger
@@ -147,10 +153,10 @@ const NewTable = (props) => {
                   />
                 ))}
             </Col>
-            <Col>
+            <Col className="colCenter">
               {props.orden.length > 0 && (
-                <Card className="center-block" style={{ width: "18rem" }}>
-                  <Card.Header>Alimentos Añadidos </Card.Header>
+                <Card className="backColor center-block" style={{ width: "18rem" }}>
+                  <Card.Header className= "backHeader">Alimentos Añadidos </Card.Header>
                   <ListGroup variant="flush">
                       <div className="text-dark font-weight-bold"  >
                         {props.orden.map((items) => (

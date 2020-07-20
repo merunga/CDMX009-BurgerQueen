@@ -1,7 +1,12 @@
+body{
+    
+background-color:#434C78;
+}
 #activeTables{
    
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-   
+    border: 5px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 15px;
      
 }
 #navBar{
@@ -14,11 +19,8 @@
    flex-direction: row;
    flex-wrap: wrap;
    justify-content: center;
-   border-radius: 15px;
-   padding: 25px 20px;
-   margin:5px;
-   border: PowderBlue 5px solid;
-   border-radius: 20px;
+ 
+   
 }
 #oneTable{
     
@@ -29,4 +31,24 @@
 #titleTables{
     text-align: center;
     margin-bottom: 25px;
+}
+
+.btn-floor{
+   
+    width: 131px;
+    height: 47px;
+    margin-bottom: 30px;
+    padding: 5%;
+    background: #EBE8E8;
+    border-radius: 15px;
+    color: #434C78;
+    font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+}
+
+.cols-center{
+    display: flex;
+    justify-content: center;
+
 }

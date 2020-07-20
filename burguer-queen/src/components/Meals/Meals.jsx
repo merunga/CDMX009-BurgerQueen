@@ -1,10 +1,7 @@
 //react-hooks/exhaustive-deps
 import React from 'react'
-import Card from 'react-bootstrap/Card'
-import ListGroup from 'react-bootstrap/ListGroup'
 import { showInfoTables } from '../../controllers'
-import cartKitchen from '../../imgs/cartKitchen.jpg'
-import { Row, Col } from "react-bootstrap";
+
 
 const Meals = (props) => {
 const [order, setOrder] = React.useState([])
