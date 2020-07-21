@@ -63,13 +63,13 @@ export const burgersTime =
         id:5,
         product: "Hamburguesa Simple",
         precio: 30,
-        flavor: ["Carne de Res","Carne de Pollo","Vegetariana"]
+        flavor: [{id:"5A",op:"Carne de Res"},{id:"5B",op:"Carne de Pollo"},{id:"5C",op:"Vegetariana"}]
     },
     {
         id:6,
         product: "Hamburguesa doble",
         precio : 40,
-        flavor: ["Carne de Res","Carne de Pollo","Vegetariana"]
+        flavor: [{id:"6A",op:"Carne de Res"},{id:"6B",op:"Carne de Pollo"},{id:"6C",op:"Vegetariana"}]
     },
     {
         id:7,

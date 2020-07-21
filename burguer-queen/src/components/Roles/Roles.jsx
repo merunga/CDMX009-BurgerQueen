@@ -7,6 +7,7 @@ import './roles.css'
 
 const Roles = () => {
   return (
+    <div className="divRoles">
     <Container className="containerRoles">
       <Row>
         <Col className="mx d-block">
@@ -21,6 +22,7 @@ const Roles = () => {
         </Col>
       </Row>
     </Container>
+    </div>
   )
 }
 

@@ -2,8 +2,9 @@ import React from 'react'
 import ButtonReturn from '../ButtonReturn/ButtonReturn'
 import { Link } from "react-router-dom"
 import { showTables2 } from '../../controllers'
-import iconTable from '../../imgs/iconTable.png'
-import {Row, Col, Navbar, } from 'react-bootstrap'
+import iconTable2 from '../../imgs/iconTable2.png'
+
+import {Row, Col, } from 'react-bootstrap'
 import './floor.css';
 
 const Floor = () => {
@@ -23,25 +24,25 @@ const Floor = () => {
   }, []);
 
   return (
-    <div className="text-center">
+
+    <div className="text-center allTheFloor">
       <Row>
-        <Col  xs lg="3"> <Row>
-       <Navbar id="navbar" fixed="top">
-      
+        <Col  className="cols-center" xs lg="3"> <Row>
+       <nav id="navbar">
        <ButtonReturn  
         ruta="/roles"
-        btnStyles="btn  btn-outline-warning btn-lg btn-block font-weight-bold "
+        btnStyles="btn btn-floor font-weight-bold "
         text="Roles" />
                <ButtonReturn
         ruta="/roles/piso/mesaNueva"
-        btnStyles="btn  btn-outline-warning btn-lg btn-block font-weight-bold " 
+        btnStyles="btn btn-floor font-weight-bold " 
         text="Agregar Mesa" />
          <ButtonReturn  
         ruta="/"
-        btnStyles="btn  btn-outline-warning btn-lg btn-block font-weight-bold "
+        btnStyles="btn btn-floor font-weight-bold "
         text="Inicio" />
        
-       </Navbar>
+       </nav>
             </Row></Col>
            
     <Col id="activeTables">
@@ -51,7 +52,7 @@ const Floor = () => {
         mesa.map((item, idx) => (
           <div  key={item.id}>
             <Link data-testid={idx} to={`/roles/piso/${item.id}`} className="btn" id={ `${item.id}`}>
-            <h2 className= "text-white">{item.number}</h2> <img src ={iconTable}  className="mx-auto d-block" alt="Tables"/>
+            <h2 className= "text-white">{item.number}</h2> <img src ={iconTable2}  className="mx-auto d-block" alt="Tables"/>
             <h3 className="text-white">{item.status}</h3>
             </Link>
 

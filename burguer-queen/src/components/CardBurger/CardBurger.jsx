@@ -2,22 +2,24 @@ import React from 'react'
 import {DropdownButton, Dropdown, Container} from 'react-bootstrap'
 const shortid = require('short-id');
 
-const CardBurger = ({element,options,price,addToMenu, newarray, setOrden}) => {
+const CardBurger = ({id,element,options,price,addToMenu, newarray, setOrden}) => {
 
 const addToMenuType = ({
+  id,
   element, 
   price, 
   newarray, 
   setOrden,
   option,
 })=>{
-  if(element === "Hamburguesa Simple" || element ==="Hamburguesa doble"){
+  if(id === 5 || id === 6){
     
   const targ = {
     producto: element, 
     precio: price,
-    id: shortid.generate(), 
-    type: option    
+    id: option.id,
+    localId: shortid.generate(),
+    type: option.op   
   }
 
   newarray.push(targ)
@@ -35,22 +37,24 @@ const addToMenuType = ({
         <h5 className="card-title" >{element}</h5>       
         {(element === "Hamburguesa Simple" || element=== "Hamburguesa doble") &&
             <div key={shortid.generate()} >
-              <DropdownButton id="dropdown-basic-button" title="Opciones">
-                {options.map((option, idx) => (
-                  <Dropdown.Item 
-                    key={idx} 
-                    onClick={()=>addToMenuType({
-                      element,
-                      price, 
-                      newarray, 
-                      setOrden, 
-                      option,
-                    })}
-                  >
-                    {option}
-                  </Dropdown.Item>
-                ))}
-              </DropdownButton>            
+            <DropdownButton id="dropdown-basic-button" title="Opciones" data-testid="cardMenu">
+            {options.map((option, idx) => (
+              <Dropdown.Item data-testid="menuOptions"
+              data-testid={idx}
+              key = {idx}
+              onClick={()=>addToMenuType({
+                  id,
+                  element,
+                  price, 
+                  newarray, 
+                  setOrden, 
+                  option,
+                })}
+              >
+                {option.op}
+              </Dropdown.Item>
+            ))}
+          </DropdownButton>            
             </div>
         }
        <p className="card-text">$ {price}</p>

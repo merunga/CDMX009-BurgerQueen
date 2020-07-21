@@ -11,3 +11,41 @@ justify-content: center;
 margin: 10px;
 padding: 5px;
 }
+
+.buttons{
+    width: 131px;
+    height: 47px;
+    margin-bottom: 30px;
+    
+    background: #EBE8E8;
+    border-radius: 15px;
+    color: white;
+    font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+}
+
+.return{
+    background-color: #C4C4C4;
+    width: 131px;
+    height: 47px;
+    border-radius: 15px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    color:white;
+    text-align: center;
+}
+.inKitchen{
+background-color: #FCAE18;
+width: 200px;
+text-align: center;
+font-size: 20px;
+}
+
+.inProcess{
+    background-color: #6FCE91;
+    text-align: center;
+    font-size: 20px;
+}

@@ -10,13 +10,13 @@ import {
 test('renders the imgs', () => {
   const { getByAltText } = render(<BrowserRouter><Roles /></BrowserRouter>);
   const check = getByAltText("Mesero");
-  expect(check).toHaveAttribute('src', 'waiter.png');
+  expect(check).toHaveAttribute('src', 'waiter.svg');
 });
 
 test('renders the imgs', () => {
     const { getByAltText } = render(<BrowserRouter><Roles /></BrowserRouter>);
     const check = getByAltText("Chef");
-    expect(check).toHaveAttribute('src', 'kitchen.png');
+    expect(check).toHaveAttribute('src', 'kitchen.svg');
   });
 
   test('should navigate to floor when link is clicked', () => {

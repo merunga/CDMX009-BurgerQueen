@@ -71,7 +71,7 @@ const TableStatus = (index) => {
                     <Navbar.Toggle />
                 </Navbar.Collapse>
             </Navbar>
-
+        <br></br><br></br>
             <Container key={index}>
                 <Row>
                     <Col className="styleCol" xs lg="5">

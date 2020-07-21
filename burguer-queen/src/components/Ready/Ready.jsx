@@ -1,5 +1,6 @@
 import React from 'react'
 import { editTime, edit, editTimeFinal } from '../../controllers'
+import './ready.css';
 const moment = require('moment')
 
 const Ready = (props) => {
@@ -20,7 +21,7 @@ const Ready = (props) => {
 
     return (
         <div>
-            <button className="btn-secondary"
+            <button className="btn-ready text-white"
                 onClick={() => ordenReady(props.numbers)}>Lista</button>
         </div>
     )
