@@ -12,7 +12,20 @@ const [order, setOrder] = React.useState([])
         // eslint-disable-next-line react-hooks/exhaustive-deps
         const resul = await showInfoTables(props.ids)
         const products = resul.orden
-        setOrder(products)
+       
+        let orderAgrup = products.reduce((result, item) => {
+          if (!result.hasOwnProperty(item.id)) {
+            result[item.id] = {
+              ...item,
+              qty: 1,
+            };
+          } else {
+            result[item.id].qty += 1;
+          }
+          return result;
+        }, {})
+  orderAgrup = Object.values(orderAgrup);
+  setOrder(orderAgrup)
       } catch (error) {
         console.log(error)
       }
@@ -20,6 +33,7 @@ const [order, setOrder] = React.useState([])
     obtenerDatos()
 
   }, [])
+  
 
   return (
     <div className="mx-auto d-block">
@@ -31,10 +45,10 @@ const [order, setOrder] = React.useState([])
     <h5 className="card-title">Cliente:{props.client}</h5>
     <div>{order.map((item, idx) => (
               <div key={idx} className="mx-auto d-block">
-                •{item.producto}
+                <h2>•{item.qty} {item.producto}</h2>
                 {(item.producto === "Hamburguesa doble" ||
                   item.producto === "Hamburguesa Simple") && (
-                  <div>{`(${item.type})`}</div>
+                  <div><h2>{`(${item.type})`}</h2></div>
                 )}
               </div>
               
