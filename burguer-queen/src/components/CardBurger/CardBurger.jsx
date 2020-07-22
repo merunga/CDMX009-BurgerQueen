@@ -35,10 +35,12 @@ const addToMenuType = ({
         <h5 className="card-title" >{element}</h5>       
         {(element === "Hamburguesa Simple" || element=== "Hamburguesa doble") &&
             <div key={shortid.generate()} >
-              <DropdownButton id="dropdown-basic-button" title="Opciones">
+              <DropdownButton id="dropdown-basic-button" title="Opciones" data-testid="cardMenu">
                 {options.map((option, idx) => (
-                  <Dropdown.Item 
-                    key={idx} 
+                  <Dropdown.Item data-testid="menuOptions"
+                  data-testid={idx}
+                  key={shortid.generate()}
+                   
                     onClick={()=>addToMenuType({
                       element,
                       price, 

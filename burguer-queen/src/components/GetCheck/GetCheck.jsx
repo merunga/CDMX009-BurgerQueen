@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import { Container } from 'react-bootstrap'
 import { showInfoTables } from '../../controllers'
+import "./getCheck.css"
 
 const GetCheck = (index) => {
 
@@ -53,7 +54,7 @@ const GetCheck = (index) => {
   }, [])
 
   return (
-    <Container>
+    <Container >
       <Card className="mx-auto d-block" style={{ width: '18rem' }}>
         <ListGroup variant="flush">
           <ListGroup.Item className="font-weight-bold"> <h2>Burger Queen </h2> <p>{total.date}</p>
@@ -61,7 +62,7 @@ const GetCheck = (index) => {
           </ListGroup.Item>
           {
             finalOrder.map(item => (
-              <ListGroup.Item key={item.id}>
+              <ListGroup.Item className="sizeLetters" key={item.id}>
                 {item.producto}  $ {item.precio}
               </ListGroup.Item>
             ))

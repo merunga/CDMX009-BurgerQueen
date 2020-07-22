@@ -10,6 +10,7 @@ background-color:#434C78;
      
 }
 #navBar{
+    position: sticky;
     width: 100%;
     background-color: snow;
 }
@@ -35,16 +36,15 @@ background-color:#434C78;
 
 .btn-floor{
    
-    width: 131px;
-    height: 47px;
+    width: 170px;
+    height: 50px;
     margin-bottom: 30px;
-    padding: 5%;
+    
     background: #EBE8E8;
     border-radius: 15px;
-    color: #434C78;
-    font-family: Roboto;
-font-style: normal;
+    color: black;
 font-weight: bold;
+font-size: 20px;
 }
 
 .cols-center{

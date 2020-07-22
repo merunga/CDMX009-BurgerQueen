@@ -55,7 +55,7 @@ const Kitchen = () => {
                 ids={item.id}
               />
             }
-            {item.status === "preparando" &&
+            {item.status === "Preparando" &&
               <Meals
                 date={item.date}
                 client={item.client}
@@ -70,12 +70,12 @@ const Kitchen = () => {
               //   : console.log("acaba de llegar")
             }
             {
-              item.status === "preparando" && <button className="btn buttons inProcess "> {item.status} </button>
+              item.status === "Preparando" && <button className="btn buttons inProcess "> {item.status} </button>
               //item.status === "preparando" ? <button className="btn-success"> {item.status} </button> : console.log("lista para entregar")     
             }
 
             {
-              item.status === "preparando" && <Ready numbers={item} />
+              item.status === "Preparando" && <Ready numbers={item} />
               //item.status === "preparando" ? <Ready numbers={item} /> : console.log("yaaaaa")
             }
           

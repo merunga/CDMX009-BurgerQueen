@@ -8,20 +8,16 @@ import {Row, Col, } from 'react-bootstrap'
 import './floor.css';
 
 const Floor = () => {
-
-
-  const [mesa, setMesa] = React.useState([])
+  const [mesa, setMesa] = React.useState([]);
 
   React.useEffect(() => {
-
     const cb = (result) => {
-      setMesa(result)
-
-    }
-    const unsubscribe = showTables2(cb)
+      setMesa(result);
+    };
+    const unsubscribe = showTables2(cb);
     // return unsubscribe
     return () => {
-      console.log('desmontando compornete Floor')
+      console.log("desmontando compornete Floor");
       unsubscribe();
     }
      
@@ -45,6 +41,7 @@ const Floor = () => {
         ruta="/"
         btnStyles="btn btn-floor font-weight-bold "
         text="Inicio" />
+       
        </nav>
             </Row></Col>
            
@@ -67,7 +64,7 @@ const Floor = () => {
 </Col> 
 </Row>
     </div>
-  )
-}
+  );
+};
 
-export default Floor
+export default Floor;
