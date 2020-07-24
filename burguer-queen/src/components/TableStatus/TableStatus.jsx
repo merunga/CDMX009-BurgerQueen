@@ -1,17 +1,30 @@
 import React from 'react'
-import { useParams, Link } from 'react-router-dom'
-import { showInfoTables2, deleteOrden, edit } from '../../controllers'
+import { useParams, Link, withRouter } from 'react-router-dom'
+import { showInfoTables2, deleteOrden, edit, userLog } from '../../controllers'
 import GetCheck from '../GetCheck/GetCheck'
 import { Container, Navbar, Row, Col } from 'react-bootstrap'
 import burgerStatus from '../../imgs/burgerStatus.svg'
 import "./tableStatus.css"
 
-const TableStatus = (index) => {
+const TableStatus = (props) => {
     const { id } = useParams()
     const [dataTable, setDataTable] = React.useState([])
     const [buttonCheck, setButtonCheck] = React.useState(false)
 
     React.useEffect(() => {
+        const checkUser=()=>{
+    
+            if (userLog())
+           { console.log("si existe")
+            
+            } else {
+              console.log("no hay nadie logueado")
+              props.history.push('/')
+            }
+          }
+        
+          checkUser()
+
         const cb = (result) => {
             setDataTable(result)
         }
@@ -21,7 +34,7 @@ const TableStatus = (index) => {
             console.log('desmontando compornete')
             unsubscribe();
         }
-    }, [])
+    }, [props.history])
 
     const checkResum = () => {
         setButtonCheck(true)
@@ -73,8 +86,8 @@ const TableStatus = (index) => {
                     <Navbar.Toggle />
                 </Navbar.Collapse>
             </Navbar>
-<br/><br/>
-            <Container key={index}>
+        <br></br><br></br>
+            <Container key={dataTable.id}>
                 <Row>
                     <Col className="styleCol" xs lg="5">
                         <img src={burgerStatus} alt="statusImg" />
@@ -96,9 +109,8 @@ const TableStatus = (index) => {
 
             </Container>
             <br></br><br></br>
-
             {
-                buttonCheck ? <GetCheck /> : console.log("es falso")
+                buttonCheck ? <GetCheck state= {setButtonCheck} /> : console.log("es falso")
             }
 
 
@@ -106,4 +118,4 @@ const TableStatus = (index) => {
     )
 }
 
-export default TableStatus
+export default withRouter(TableStatus)

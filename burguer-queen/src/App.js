@@ -13,10 +13,17 @@ import Kitchen from './components/Kitchen/Kitchen';
 import Floor from './components/Floor/Floor';
 import TableStatus from './components/TableStatus/TableStatus';
 import NewTable from './components/NewTable/NewTable';
+import { theWatcher } from './controllers';
 
 function App() {
   const [orden, setOrden] = React.useState([])
-   return (
+  const [firebaseUser, setFirebaseUser] = React.useState(false)
+
+React.useEffect(() => {
+  theWatcher(setFirebaseUser);
+}, [])
+return firebaseUser !== false ? (
+ 
     <Router>
   <Switch>
   <Route path="/roles/piso/mesaNueva">
@@ -41,9 +48,10 @@ function App() {
   </Route>
 </Switch>
 </Router>
+) : (
+  <div>Cargando...</div>
+)
 
-
-  );
 }
 
 export default App;

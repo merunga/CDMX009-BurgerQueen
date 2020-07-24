@@ -5,6 +5,8 @@
     background: #EBE8E8;
     border-radius: 15px;
     color: #434C78;
+ font-size: 20px;
+font-style: normal;
 font-weight: bold;
 font-size:20px;
 }
@@ -18,10 +20,8 @@ font-size:20px;
     background: #FDAD19;;
     border-radius: 15px;
     color: white;
-    font-weight: bold;
-font-size:20px;
-
- 
+    font-size: 20px; 
+font-style: normal;
 font-weight: bold;
 }
 

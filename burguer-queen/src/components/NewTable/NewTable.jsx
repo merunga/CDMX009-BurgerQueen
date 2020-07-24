@@ -1,15 +1,13 @@
 import React from "react";
-import breakfast from "../../imgs/breakfast.png";
-import burgerTime from "../../imgs/burgerTime.svg";
+import { Container, Row, Col, ListGroup, Card } from "react-bootstrap";
 import iconDelete from "../../imgs/iconDelete.png";
 import hamburger from "../../imgs/hamburger.png";
 import ButtonReturn from "../ButtonReturn/ButtonReturn";
-import ImgMenus from "../ImgMenus/ImgMenus";
 import Form from "../Form/Form";
 import CardBurger from "../CardBurger/CardBurger";
-import { createTable } from "../../controllers";
-import { Container, Row, Col, ListGroup, Card } from "react-bootstrap";
+import { createTable, userLog } from "../../controllers";
 import { breackfast, burgersTime } from "../../utils/menus.js";
+import {withRouter} from 'react-router-dom'
 import './newTable.css';
 
 const shortid = require("short-id");
@@ -22,6 +20,21 @@ const NewTable = (props) => {
   const [cardBreakfast, setCardBreacfast] = React.useState(false);
   const [date, setDate] = React.useState("");
   const newarray = [];
+
+  React.useEffect(() => {
+    const checkUser=()=>{
+    
+      if (userLog())
+     { console.log("si existe")
+      } else {
+        console.log("no hay nadie logueado")
+        props.history.push('/')
+      }
+    }
+  
+    checkUser()
+
+  }, [props.history]);
 
   const addElement = async (e) => {
     e.preventDefault();
@@ -60,38 +73,51 @@ const NewTable = (props) => {
   };
 
   const addSomething = (item) => {
-    //item.flavor.forEach(element =>console.log(element))
-    //let flavor = e.target(item.)
-    //if(item.product !== "Hamburguesa Simple" || item.product !=="Hamburguesa doble"){
     const targ = {
       producto: item.product,
       precio: item.precio,
-      id: shortid.generate(),
+      id: item.id,
+      localId: shortid.generate(),
     };
     newarray.push(targ);
     props.setOrden([...props.orden, ...newarray]);
     console.log(props.orden);
     
-
     let dates = new Date();
     dates += Date.now();
     const date1 = dates.slice(0, 25);
     setDate(date1);
-
-    //}
   };
 
   const deleteItem = (id, orden) => {
-    console.log("voy a borrar");
-    const arrayFiltrado = orden.filter((item) => item.id !== id);
-    props.setOrden(arrayFiltrado);
+    // const arrayFiltrado = orden.filter((item) => item.id !== id);
+    const nuevoArr = [...orden];
+    const firstIdx = nuevoArr.map((i) => i.id).indexOf(id);
+    nuevoArr.splice(firstIdx, 1);
+    props.setOrden(nuevoArr);
   };
 
   const cartAMostrar =
     (cartDinner && burgersTime) || (cardBreakfast && breackfast);
+
+  let orderAgrup = props.orden.reduce((result, item) => {
+    if (!result.hasOwnProperty(item.id)) {
+      result[item.id] = {
+        ...item,
+        qty: 1,
+      };
+    } else {
+      result[item.id].qty += 1;
+    }
+    return result;
+  }, {})
+
+  orderAgrup = Object.values(orderAgrup);
+
   return (
     <div className="text-center">
       <ul className="mt-5 ml-5 mr-5 mx-auto d-block">
+        
         <Form
           types="text"
           text="Meser@"
@@ -143,7 +169,8 @@ const NewTable = (props) => {
                 cartAMostrar.map((item) => (
                   <CardBurger
                     newarray={newarray}
-                    key={item.id}
+                    key={shortid.generate()}
+                    id={item.id}
                     element={item.product}
                     options={item.flavor}
                     price={item.precio}
@@ -154,14 +181,15 @@ const NewTable = (props) => {
                 ))}
             </Col>
             <Col className="colCenter">
-              {props.orden.length > 0 && (
-                <Card className="backColor center-block" style={{ width: "18rem" }}>
+              {orderAgrup.length > 0 && (
+                <Card className="backColor center-block" style={{ width: "20rem" }}>
                   <Card.Header className= "backHeader">Alimentos Añadidos </Card.Header>
                   <ListGroup variant="flush">
                       <div className="text-dark font-weight-bold"  >
-                        {props.orden.map((items) => (
+                        {orderAgrup.map((items) => (
                           <ListGroup.Item key={items.id}>
                           <Row>
+                            <Col xs lg="2">{items.qty}</Col>
                           <Col>{items.producto}</Col>
                           <Col xs lg="2"><img
                           src={iconDelete}
@@ -195,4 +223,4 @@ const NewTable = (props) => {
   );
 };
 
-export default NewTable;
+export default withRouter(NewTable);
