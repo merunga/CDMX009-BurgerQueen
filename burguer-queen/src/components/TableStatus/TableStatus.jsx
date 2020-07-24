@@ -96,7 +96,7 @@ const TableStatus = (index) => {
             <br></br><br></br>
 
             {
-                buttonCheck ? <GetCheck /> : console.log("es falso")
+                buttonCheck ? <GetCheck state= {setButtonCheck} /> : console.log("es falso")
             }
 
 

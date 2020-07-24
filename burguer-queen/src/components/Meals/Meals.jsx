@@ -38,17 +38,17 @@ const [order, setOrder] = React.useState([])
   return (
     <div className="mx-auto d-block">
       
-      <div className="card bg-light mb-3"  style={{width: "18rem"}}>
-  <div className="card-header">Orden Mesa: {props.number}</div>
+      <div className="card bg-light mb-3"  style={{width: "22rem"}}>
+  <div className="card-header"><h3>Orden Mesa: {props.number}</h3></div>
   <div className="card-body">
     <h5 className="card-title">{props.date}</h5>
     <h5 className="card-title">Cliente:{props.client}</h5>
     <div>{order.map((item, idx) => (
               <div key={idx} className="mx-auto d-block">
-                <h2>•{item.qty} {item.producto}</h2>
+                <h3>•{item.qty} {item.producto}</h3>
                 {(item.producto === "Hamburguesa doble" ||
                   item.producto === "Hamburguesa Simple") && (
-                  <div><h2>{`(${item.type})`}</h2></div>
+                  <div><h3>{`(${item.type})`}</h3></div>
                 )}
               </div>
               

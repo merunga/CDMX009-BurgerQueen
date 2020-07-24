@@ -174,14 +174,14 @@ const NewTable = (props) => {
             </Col>
             <Col className="colCenter">
               {orderAgrup.length > 0 && (
-                <Card className="backColor center-block" style={{ width: "18rem" }}>
+                <Card className="backColor center-block" style={{ width: "20rem" }}>
                   <Card.Header className= "backHeader">Alimentos Añadidos </Card.Header>
                   <ListGroup variant="flush">
                       <div className="text-dark font-weight-bold"  >
                         {orderAgrup.map((items) => (
                           <ListGroup.Item key={items.id}>
                           <Row>
-                            <Col>{items.qty}</Col>
+                            <Col xs lg="2" >{items.qty}</Col>
                           <Col>{items.producto}</Col>
                           <Col xs lg="2"><img
                           src={iconDelete}
@@ -191,10 +191,10 @@ const NewTable = (props) => {
                           onClick={() => deleteItem(items.id, props.orden)}/>
                          </Col>
                         
-                          </Row>
-                          {(items.producto === "Hamburguesa doble" || items.producto === "Hamburguesa Simple")&&
+                         </Row>
+                         {(items.producto === "Hamburguesa Simple" || items.producto === "Hamburguesa doble")&&
                           <p>{`(${items.type})`}</p>
-                          }
+                        }
                             
                             
                           </ListGroup.Item>
