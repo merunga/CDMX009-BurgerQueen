@@ -33,3 +33,5 @@ test('renders the imgs', () => {
     fireEvent.click(link);
     expect(link.closest('a')).toHaveAttribute('href', "/roles/cocina"); 
   });
+
+  
