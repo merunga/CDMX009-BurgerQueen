@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/shari12/CDMX009-BurgerQueen/precache-manifest.2cccf9455c45ab2b54c8a5b0fcd78665.js"
+  "/shari12/CDMX009-BurgerQueen/burguer-queen/precache-manifest.a63b105e0e1885b46ff0cdfcf4cfc38e.js"
 );
 
 self.addEventListener('message', (event) => {
@@ -33,7 +33,7 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/shari12/CDMX009-BurgerQueen/index.html"), {
+workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/shari12/CDMX009-BurgerQueen/burguer-queen/index.html"), {
   
   blacklist: [/^\/_/,/\/[^/?]+\.[^/]+$/],
 });
