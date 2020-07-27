@@ -115,7 +115,7 @@ const NewTable = (props) => {
   orderAgrup = Object.values(orderAgrup);
 
   return (
-    <div className="text-center">
+    <div className="text-center" data-testid="newTableComponent">
       <ul className="mt-5 ml-5 mr-5 mx-auto d-block">
         
         <Form
@@ -140,10 +140,10 @@ const NewTable = (props) => {
       <div>
         <Row  className="navButtons">
           <Col>
-            <button alt="FirstMeal" className="btn btn-meal" onClick={showDinnerOrBreakfast(true)}>Comidas</button> 
+            <button data-testid="burgersMenu" alt="FirstMeal" className="btn btn-meal" onClick={showDinnerOrBreakfast(true)}>Comidas</button> 
           </Col>
           <Col>
-            <button alt="SecondMeal" className="btn btn-meal" onClick={showDinnerOrBreakfast(false)}>Desayunos</button> 
+            <button data-testid="breakfastMenu" alt="SecondMeal" className="btn btn-meal" onClick={showDinnerOrBreakfast(false)}>Desayunos</button> 
           </Col>
           <Col>
           <ButtonReturn
@@ -164,10 +164,11 @@ const NewTable = (props) => {
         )}
         <Container>
           <Row>
-            <Col className="fixSize md-6" >
+            <Col className="fixSize md-6" data-testid="boxMenu">
               {cartAMostrar &&
                 cartAMostrar.map((item) => (
-                  <CardBurger
+                  <div data-testid={item.product}  key={shortid.generate()}>
+                  <CardBurger 
                     newarray={newarray}
                     key={shortid.generate()}
                     id={item.id}
@@ -178,6 +179,7 @@ const NewTable = (props) => {
                     setOrden={props.setOrden}
                     orden={props.orden}
                   />
+                  </div>
                 ))}
             </Col>
             <Col className="colCenter">
@@ -185,7 +187,7 @@ const NewTable = (props) => {
                 <Card className="backColor center-block" style={{ width: "20rem" }}>
                   <Card.Header className= "backHeader">Alimentos Añadidos </Card.Header>
                   <ListGroup variant="flush">
-                      <div className="text-dark font-weight-bold"  >
+                      <div className="text-dark font-weight-bold" data-testid="addItem" >
                         {orderAgrup.map((items) => (
                           <ListGroup.Item key={items.id}>
                           <Row>

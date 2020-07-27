@@ -106,4 +106,3 @@ const GetCheck = ({ state }) => {
 };
 
 export default GetCheck;
-

@@ -35,16 +35,16 @@ const Meals = (props) => {
   return (
     <div className="mx-auto d-block">
       <div className="card bg-light mb-3" style={{ width: "22rem" }}>
-        <div className="card-header">
+        <div className="card-header" >
           <h3>Orden Mesa: {props.number}</h3>
         </div>
         <div className="card-body">
           <h5 className="card-title">{props.date}</h5>
           <h5 className="card-title">Cliente:{props.client}</h5>
-          <div>
+          <div data-testid="meals">
             {order.map((item, idx) => (
-              <div key={idx} className="mx-auto d-block">
-                <h3>
+              <div  key={idx} className="mx-auto d-block">
+                <h3 data-testid={"orden"+ idx}>
                   •{item.qty} {item.producto}
                 </h3>
                 {(item.producto === "Hamburguesa doble" ||

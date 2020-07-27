@@ -39,6 +39,10 @@ function RegisterUser(props) {
           setError("Email no válido");
           return;
         }
+        if (error.code === "auth/weak-password") {
+          setError("La contraseña debe ser mayor de 6 caracteres");
+          return;
+        }
       }
     } else {
       const msgErr = "Necesitas la validación de tu gerente ";
@@ -63,6 +67,10 @@ function RegisterUser(props) {
       if (error.code === "auth/wrong-password") {
         setError("Contraseña incorrecta");
       }
+      if (error.code === "auth/invalid-email") {
+        setError("Email con formato equivocado");
+      }
+      
       console.log(error.code);
       console.log(error.message);
     }
