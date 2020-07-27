@@ -16,7 +16,7 @@ const Ready = (props) => {
             await editTimeFinal(numbers.id, cookingTime)
             return editTimeFinal
         } catch (error) {
-            console.log(error)
+            return (error)
         }
     }
 

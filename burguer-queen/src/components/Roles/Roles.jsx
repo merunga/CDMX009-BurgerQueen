@@ -15,10 +15,9 @@ React.useEffect(()=>{
   const checkUser=()=>{
     
     if (userLog())
-   { console.log("si existe")
+   { 
     setUser(userLog())
     } else {
-      console.log("no hay nadie logueado")
       props.history.push('/')
     }
   }

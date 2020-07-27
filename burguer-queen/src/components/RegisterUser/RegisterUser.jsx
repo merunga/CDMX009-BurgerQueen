@@ -29,8 +29,6 @@ function RegisterUser(props) {
         setBoss("");
         props.history.push("/roles");
       } catch (error) {
-        console.log(error);
-        // setError(error.message)
         if (error.code === "auth/email-already-in-use") {
           setError("Usuario ya registrado...");
           return;
@@ -59,7 +57,6 @@ function RegisterUser(props) {
       setEmail("");
       setPassword("");
       props.history.push("/roles");
-      console.log("estas dentro");
     } catch (error) {
       if (error.code === "auth/user-not-found") {
         setError("Usuario no registrado");
@@ -70,9 +67,7 @@ function RegisterUser(props) {
       if (error.code === "auth/invalid-email") {
         setError("Email con formato equivocado");
       }
-      
-      console.log(error.code);
-      console.log(error.message);
+
     }
   };
 
