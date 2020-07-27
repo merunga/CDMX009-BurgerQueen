@@ -4,7 +4,7 @@ import './ready.css';
 const moment = require('moment')
 
 const Ready = (props) => {
-
+    
     const ordenReady = async (numbers) => {
         let dateOne = new Date();
         let dates = moment(new Date())
@@ -14,6 +14,7 @@ const Ready = (props) => {
             await edit(numbers.id, "Orden Lista")
             await editTime(numbers.id, dateOne)
             await editTimeFinal(numbers.id, cookingTime)
+            return editTimeFinal
         } catch (error) {
             console.log(error)
         }
@@ -21,7 +22,7 @@ const Ready = (props) => {
 
     return (
         <div>
-            <button className="btn-ready text-white"
+            <button data-testid="ready" className="btn-ready text-white"
                 onClick={() => ordenReady(props.numbers)}>Lista</button>
         </div>
     )

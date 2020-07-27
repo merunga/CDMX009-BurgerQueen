@@ -201,10 +201,10 @@ const NewTable = (props) => {
                           onClick={() => deleteItem(items.id, props.orden)}/>
                          </Col>
                         
-                          </Row>
-                          {(items.producto === "Hamburguesa doble" || items.producto === "Hamburguesa Simple")&&
+                         </Row>
+                         {(items.producto === "Hamburguesa Simple" || items.producto === "Hamburguesa doble")&&
                           <p>{`(${items.type})`}</p>
-                          }
+                        }
                             
                             
                           </ListGroup.Item>

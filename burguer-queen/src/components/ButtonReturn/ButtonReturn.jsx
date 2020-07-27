@@ -4,7 +4,7 @@ const ButtonReturn = (props) => {
     return (
         
         <div>
-                 <Link data-testid="anyButton" to={props.ruta} className={props.btnStyles}> {props.text} </Link>
+        <Link data-testid="anyButton" to={props.ruta} className={props.btnStyles}> {props.text} </Link>
         </div>
     )
 }

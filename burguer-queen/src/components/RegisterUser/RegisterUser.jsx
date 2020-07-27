@@ -78,13 +78,13 @@ function RegisterUser(props) {
 
   return (
     <>
-      <Button className="getIn" onClick={handleShow}>
+      <Button  data-testid="entrar" className="getIn" onClick={handleShow}>
         Entrar
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Ingresar datos</Modal.Title>
+          <Modal.Title data-testid="initialText">Ingresar datos</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {errPassManager !== null && (
@@ -92,12 +92,14 @@ function RegisterUser(props) {
           )}
 
           {error && <div className="alert alert-danger">{error} </div>}
-          <Form
+         
+          <Form 
             types="email"
             text="Ingresa tu email"
             changeAction={(e) => setEmail(e.target.value)}
             val={email}
           />
+          
           <Form
             types="password"
             text="Ingresa tu contraseña"
@@ -115,7 +117,7 @@ function RegisterUser(props) {
         </Modal.Body>
         <Modal.Footer>
           {!newRegister && (
-            <Button variant="secondary" onClick={() => activeRegister()}>
+            <Button data-testid="register" variant="secondary" onClick={() => activeRegister()}>
               ¿No tienes cuenta?
             </Button>
           )}
