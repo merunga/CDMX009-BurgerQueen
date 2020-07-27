@@ -71,7 +71,7 @@ const TableStatus = (props) => {
             <Navbar>
                 <Navbar.Collapse className="justify-content-center">
                     <Navbar.Brand>
-                        <button className="btn" id="btns" onClick={() => checkResum()}>Cuenta</button>
+                        <button data-testid="check" className="btn" id="btns" onClick={() => checkResum()}>Cuenta</button>
                     </Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Brand>

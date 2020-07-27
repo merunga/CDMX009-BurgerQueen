@@ -53,9 +53,9 @@ const Kitchen = (props) => {
       </div>
       <h1 className="text-white mt-5"> Ordenes por preparar </h1>
 
-      <div id="cardOrders">
-        {table.map((item) => (
-          <div id="oneOrder" key={item.id}>
+      <div id="cardOrders" data-testid="allOrders">
+        {table.map((item, index) => (
+          <div id="oneOrder" data-testid={"orden"+index} key={item.id}>
             {item.status === "Enviado a cocina" && (
               <Meals
                 date={item.date}
