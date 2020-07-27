@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/shari12/CDMX009-BurgerQueen/static/css/main.c5eebae7.chunk.css",
+    "main.js": "/shari12/CDMX009-BurgerQueen/static/js/main.2cab3ffd.chunk.js",
+    "main.js.map": "/shari12/CDMX009-BurgerQueen/static/js/main.2cab3ffd.chunk.js.map",
+    "runtime-main.js": "/shari12/CDMX009-BurgerQueen/static/js/runtime-main.b4969754.js",
+    "runtime-main.js.map": "/shari12/CDMX009-BurgerQueen/static/js/runtime-main.b4969754.js.map",
+    "static/js/2.36d2bdd7.chunk.js": "/shari12/CDMX009-BurgerQueen/static/js/2.36d2bdd7.chunk.js",
+    "static/js/2.36d2bdd7.chunk.js.map": "/shari12/CDMX009-BurgerQueen/static/js/2.36d2bdd7.chunk.js.map",
+    "index.html": "/shari12/CDMX009-BurgerQueen/index.html",
+    "precache-manifest.2cccf9455c45ab2b54c8a5b0fcd78665.js": "/shari12/CDMX009-BurgerQueen/precache-manifest.2cccf9455c45ab2b54c8a5b0fcd78665.js",
+    "service-worker.js": "/shari12/CDMX009-BurgerQueen/service-worker.js",
+    "static/css/main.c5eebae7.chunk.css.map": "/shari12/CDMX009-BurgerQueen/static/css/main.c5eebae7.chunk.css.map",
+    "static/js/2.36d2bdd7.chunk.js.LICENSE.txt": "/shari12/CDMX009-BurgerQueen/static/js/2.36d2bdd7.chunk.js.LICENSE.txt",
+    "static/media/burgerStatus.svg": "/shari12/CDMX009-BurgerQueen/static/media/burgerStatus.0d1f8ed5.svg",
+    "static/media/hamburger.png": "/shari12/CDMX009-BurgerQueen/static/media/hamburger.f5f7b6fc.png",
+    "static/media/kitchen.svg": "/shari12/CDMX009-BurgerQueen/static/media/kitchen.563840f5.svg",
+    "static/media/queen.svg": "/shari12/CDMX009-BurgerQueen/static/media/queen.2cc136b6.svg",
+    "static/media/waiter.svg": "/shari12/CDMX009-BurgerQueen/static/media/waiter.8a4f8da2.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b4969754.js",
+    "static/js/2.36d2bdd7.chunk.js",
+    "static/css/main.c5eebae7.chunk.css",
+    "static/js/main.2cab3ffd.chunk.js"
+  ]
+}
