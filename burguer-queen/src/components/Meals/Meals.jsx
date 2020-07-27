@@ -26,7 +26,7 @@ const Meals = (props) => {
         orderAgrup = Object.values(orderAgrup);
         setOrder(orderAgrup);
       } catch (error) {
-        console.log(error);
+        return error;
       }
     };
     obtenerDatos();

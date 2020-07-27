@@ -25,9 +25,8 @@ const NewTable = (props) => {
     const checkUser=()=>{
     
       if (userLog())
-     { console.log("si existe")
+     { return userLog()
       } else {
-        console.log("no hay nadie logueado")
         props.history.push('/')
       }
     }
@@ -42,7 +41,6 @@ const NewTable = (props) => {
     setCartDinner(false);
 
     if (!waiter.trim() || !client.trim() || !table.trim()) {
-      console.log("está vacio");
       return;
     }
     try {
@@ -58,13 +56,10 @@ const NewTable = (props) => {
       setTable("");
       setWaiter("");
       props.setOrden([]);
-      
 
-      console.log("se guardó en bd");
     } catch (error) {
-      console.log(error);
+      return error
     }
-    console.log("yeah");
   };
 
   const showDinnerOrBreakfast = (isDinner) => () => {
@@ -81,7 +76,6 @@ const NewTable = (props) => {
     };
     newarray.push(targ);
     props.setOrden([...props.orden, ...newarray]);
-    console.log(props.orden);
     
     let dates = new Date();
     dates += Date.now();
@@ -90,7 +84,6 @@ const NewTable = (props) => {
   };
 
   const deleteItem = (id, orden) => {
-    // const arrayFiltrado = orden.filter((item) => item.id !== id);
     const nuevoArr = [...orden];
     const firstIdx = nuevoArr.map((i) => i.id).indexOf(id);
     nuevoArr.splice(firstIdx, 1);

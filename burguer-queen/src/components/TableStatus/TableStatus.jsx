@@ -15,7 +15,7 @@ const TableStatus = (props) => {
         const checkUser=()=>{
     
             if (userLog())
-           { console.log("si existe")
+           { return userLog()
             
             } else {
               console.log("no hay nadie logueado")
@@ -45,24 +45,19 @@ const TableStatus = (props) => {
     const deletes = async (id) => {
         try {
             await deleteOrden(id)
-            console.log("borrado")
-
         }
         catch (error) {
-            console.log(error)
+            return (error)
 
         }
 
     }
-
     const orderDeliver = async (id) => {
         try {
             const resul = await edit(id, "✔ Orden entregada")
-           
             return resul
-
         } catch (error) {
-            console.log(error)
+            return (error)
         }
     }
 
