@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/css/main.c5eebae7.chunk.css",
-    "main.js": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/js/main.cef3ee75.chunk.js",
-    "main.js.map": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/js/main.cef3ee75.chunk.js.map",
+    "main.js": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/js/main.6ed71c40.chunk.js",
+    "main.js.map": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/js/main.6ed71c40.chunk.js.map",
     "runtime-main.js": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/js/runtime-main.06ac46db.js",
     "runtime-main.js.map": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/js/runtime-main.06ac46db.js.map",
-    "static/js/2.36d2bdd7.chunk.js": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/js/2.36d2bdd7.chunk.js",
-    "static/js/2.36d2bdd7.chunk.js.map": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/js/2.36d2bdd7.chunk.js.map",
+    "static/js/2.0893b460.chunk.js": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/js/2.0893b460.chunk.js",
+    "static/js/2.0893b460.chunk.js.map": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/js/2.0893b460.chunk.js.map",
     "index.html": "/shari12/CDMX009-BurgerQueen/burguer-queen/index.html",
-    "precache-manifest.a63b105e0e1885b46ff0cdfcf4cfc38e.js": "/shari12/CDMX009-BurgerQueen/burguer-queen/precache-manifest.a63b105e0e1885b46ff0cdfcf4cfc38e.js",
+    "precache-manifest.87296fdc23d33a372508368ed5642317.js": "/shari12/CDMX009-BurgerQueen/burguer-queen/precache-manifest.87296fdc23d33a372508368ed5642317.js",
     "service-worker.js": "/shari12/CDMX009-BurgerQueen/burguer-queen/service-worker.js",
     "static/css/main.c5eebae7.chunk.css.map": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/css/main.c5eebae7.chunk.css.map",
-    "static/js/2.36d2bdd7.chunk.js.LICENSE.txt": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/js/2.36d2bdd7.chunk.js.LICENSE.txt",
+    "static/js/2.0893b460.chunk.js.LICENSE.txt": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/js/2.0893b460.chunk.js.LICENSE.txt",
     "static/media/burgerStatus.svg": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/media/burgerStatus.0d1f8ed5.svg",
     "static/media/hamburger.png": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/media/hamburger.f5f7b6fc.png",
     "static/media/kitchen.svg": "/shari12/CDMX009-BurgerQueen/burguer-queen/static/media/kitchen.563840f5.svg",
@@ -20,8 +20,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.06ac46db.js",
-    "static/js/2.36d2bdd7.chunk.js",
+    "static/js/2.0893b460.chunk.js",
     "static/css/main.c5eebae7.chunk.css",
-    "static/js/main.cef3ee75.chunk.js"
+    "static/js/main.6ed71c40.chunk.js"
   ]
 }
