@@ -1,16 +1,31 @@
 import React from 'react'
 import ButtonReturn from '../ButtonReturn/ButtonReturn'
 import { Link } from "react-router-dom"
-import { showTables2 } from '../../controllers'
+import { showTables2, userLog } from '../../controllers'
 import iconTable2 from '../../imgs/iconTable2.png'
 
 import {Row, Col, } from 'react-bootstrap'
 import './floor.css';
+import {withRouter} from 'react-router-dom'
+import LogOut from '../LogOut/LogOut'
 
-const Floor = () => {
+const Floor = (props) => {
   const [mesa, setMesa] = React.useState([]);
 
   React.useEffect(() => {
+    const checkUser=()=>{
+    
+      if (userLog())
+     { console.log("si existe")
+      
+      } else {
+        console.log("no hay nadie logueado")
+        props.history.push('/')
+      }
+    }
+  
+    checkUser()
+
     const cb = (result) => {
       setMesa(result);
     };
@@ -20,8 +35,9 @@ const Floor = () => {
       console.log("desmontando compornete Floor");
       unsubscribe();
     }
+
      
-  }, []);
+  }, [props.history]);
 
   return (
 
@@ -37,10 +53,7 @@ const Floor = () => {
         ruta="/roles/piso/mesaNueva"
         btnStyles="btn btn-floor font-weight-bold " 
         text="Agregar Mesa" />
-         <ButtonReturn  
-        ruta="/"
-        btnStyles="btn btn-floor font-weight-bold "
-        text="Inicio" />
+         <LogOut/>
        
        </nav>
             </Row></Col>
@@ -67,4 +80,4 @@ const Floor = () => {
   );
 };
 
-export default Floor;
+export default withRouter(Floor);

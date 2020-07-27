@@ -1,17 +1,30 @@
 import React from 'react'
-import { useParams, Link } from 'react-router-dom'
-import { showInfoTables2, deleteOrden, edit } from '../../controllers'
+import { useParams, Link, withRouter } from 'react-router-dom'
+import { showInfoTables2, deleteOrden, edit, userLog } from '../../controllers'
 import GetCheck from '../GetCheck/GetCheck'
 import { Container, Navbar, Row, Col } from 'react-bootstrap'
 import burgerStatus from '../../imgs/burgerStatus.svg'
 import "./tableStatus.css"
 
-const TableStatus = (index) => {
+const TableStatus = (props) => {
     const { id } = useParams()
     const [dataTable, setDataTable] = React.useState([])
     const [buttonCheck, setButtonCheck] = React.useState(false)
 
     React.useEffect(() => {
+        const checkUser=()=>{
+    
+            if (userLog())
+           { console.log("si existe")
+            
+            } else {
+              console.log("no hay nadie logueado")
+              props.history.push('/')
+            }
+          }
+        
+          checkUser()
+
         const cb = (result) => {
             setDataTable(result)
         }
@@ -21,7 +34,7 @@ const TableStatus = (index) => {
             console.log('desmontando compornete')
             unsubscribe();
         }
-    }, [])
+    }, [props.history])
 
     const checkResum = () => {
         setButtonCheck(true)
@@ -45,7 +58,7 @@ const TableStatus = (index) => {
     const orderDeliver = async (id) => {
         try {
             const resul = await edit(id, "✔ Orden entregada")
-
+           
             return resul
 
         } catch (error) {
@@ -58,11 +71,13 @@ const TableStatus = (index) => {
             <Navbar>
                 <Navbar.Collapse className="justify-content-center">
                     <Navbar.Brand>
-                        <button className="btn" id="btns" onClick={() => checkResum()}>Cuenta</button>
+                        <button data-testid="check" className="btn" id="btns" onClick={() => checkResum()}>Cuenta</button>
                     </Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Brand>
-                        <Link to="/roles/piso" className="btn" id="btns" onClick={() => deletes(id)}> Cerrar Mesa </Link>
+                        {dataTable.status==="✔ Orden entregada" &&
+                        <Link to="/roles/piso" className="btn" id="btns" onClick={() => deletes(id)}> Cerrar Mesa </Link>}
+                        {dataTable.status!=="✔ Orden entregada" && <button  className="btn" id="btns" > Cerrar Mesa </button>}
                     </Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Brand>
@@ -72,7 +87,7 @@ const TableStatus = (index) => {
                 </Navbar.Collapse>
             </Navbar>
         <br></br><br></br>
-            <Container key={index}>
+            <Container key={dataTable.id}>
                 <Row>
                     <Col className="styleCol" xs lg="5">
                         <img src={burgerStatus} alt="statusImg" />
@@ -94,7 +109,6 @@ const TableStatus = (index) => {
 
             </Container>
             <br></br><br></br>
-
             {
                 buttonCheck ? <GetCheck state= {setButtonCheck} /> : console.log("es falso")
             }
@@ -104,4 +118,4 @@ const TableStatus = (index) => {
     )
 }
 
-export default TableStatus
+export default withRouter(TableStatus)
