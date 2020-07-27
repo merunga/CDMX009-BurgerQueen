@@ -1,0 +1,26 @@
+#imgSize{
+    
+width: 1034.72px;
+height: 1038.24px;
+
+
+}
+
+.firstButton{
+   
+width: 333px;
+height: 88px;
+
+color: white;
+
+background: #FCAE18;
+border-radius: 71px;
+font-weight: bold;
+font-size: 70px;
+line-height: 59px;
+margin-bottom: 100px;
+}
+
+.lgn{
+    background-color: white;
+}

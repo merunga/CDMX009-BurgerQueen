@@ -1,0 +1,57 @@
+#cardOrders{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: center;
+
+
+}
+
+#oneOrder{
+margin: 10px;
+padding: 5px;
+}
+
+.buttons{
+    width: 131px;
+    height: 47px;
+    margin-bottom: 30px;
+    
+    background: #EBE8E8;
+    border-radius: 15px;
+    color: white;
+    font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+}
+
+.return{
+    width: 170px;
+    height: 50px;
+    margin-bottom: 30px;
+    
+    background: #EBE8E8;
+    border-radius: 15px;
+    color: #434C78;
+font-weight: bold;
+font-size: 20px;
+    
+    text-align: center;
+}
+.inKitchen{
+background-color: #FCAE18;
+width: 200px;
+text-align: center;
+font-size: 20px;
+}
+
+.inProcess{
+    background-color: #6FCE91;
+    text-align: center;
+    font-size: 20px;
+}
+
+.btnFix{
+    display: flex;
+    flex-direction: row;
+}

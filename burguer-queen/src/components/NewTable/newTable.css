@@ -1,0 +1,45 @@
+.btn-meal{
+    width: 131px;
+    height: 47px;
+    margin-bottom: 30px;
+    background: #EBE8E8;
+    border-radius: 15px;
+    color: #434C78;
+ font-size: 20px;
+font-style: normal;
+font-weight: bold;
+font-size:20px;
+}
+.navButtons{
+    margin: 5%;
+}
+.buttonReturn{
+    width: 131px;
+    height: 47px;
+    margin-bottom: 30px;
+    background: #FDAD19;;
+    border-radius: 15px;
+    color: white;
+    font-size: 20px; 
+font-style: normal;
+font-weight: bold;
+}
+
+
+.fixSize{
+    height: 935px;
+    overflow: scroll;
+}
+.colCenter{
+    display: flex;
+    justify-content: center;
+  
+}
+
+.backColor{
+    background-color: #434C78;
+}
+
+.backHeader{
+    background-color: #EBE8E8;
+}

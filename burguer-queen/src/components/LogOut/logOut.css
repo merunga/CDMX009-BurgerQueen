@@ -1,0 +1,11 @@
+.btnStyle {
+  width: 170px;
+  height: 50px;
+  margin-bottom: 30px;
+  background: #ebe8e8;
+  border-radius: 15px;
+  color: #434c78;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
