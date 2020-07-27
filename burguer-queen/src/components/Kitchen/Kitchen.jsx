@@ -5,23 +5,22 @@ import { showTables2, edit, userLog } from "../../controllers";
 import Meals from "../Meals/Meals";
 import Ready from "../Ready/Ready";
 import { Container, Row, Col } from "react-bootstrap";
-import "./kitchen.css";
 import LogOut from "../LogOut/LogOut";
-import {withRouter} from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+import "./kitchen.css";
 
 const Kitchen = (props) => {
   const [table, setTable] = React.useState([]);
   React.useEffect(() => {
-    const checkUser=()=>{
-    
-      if (userLog())
-     { console.log("si existe")
+    const checkUser = () => {
+
+      if (userLog()) {
+        return userLog
       } else {
-        console.log("no hay nadie logueado")
         props.history.push('/')
       }
     }
-  
+
     checkUser()
 
     const cb = (result) => {
@@ -30,7 +29,6 @@ const Kitchen = (props) => {
     const unsubscribe = showTables2(cb);
     // return unsubscribe
     return () => {
-      console.log("desmontando compornete Floor");
       unsubscribe();
     };
   }, [props.history]);
@@ -40,22 +38,20 @@ const Kitchen = (props) => {
       const resul = await edit(item.id, "Preparando");
       return resul;
     } catch (error) {
-      console.log(error);
+      return error
     }
   };
 
   return (
     <Container>
       <div className="btnFix">
-        {" "}
         <LogOut />
         <ButtonReturn ruta="/roles" btnStyles="btn return" text="Regresar" />
       </div>
       <h1 className="text-white mt-5"> Ordenes por preparar </h1>
-
       <div id="cardOrders" data-testid="allOrders">
         {table.map((item, index) => (
-          <div id="oneOrder" data-testid={"orden"+index} key={item.id}>
+          <div id="oneOrder" data-testid={"orden" + index} key={item.id}>
             {item.status === "Enviado a cocina" && (
               <Meals
                 date={item.date}
@@ -82,9 +78,6 @@ const Kitchen = (props) => {
                   {item.status}
                 </button>
               )
-              //item.status === "Enviado a cocina" ? <button className="btn-warning"
-              // onClick={() => changeState(item)}>{state}</button>
-              //   : console.log("acaba de llegar")
             }
             {
               item.status === "Preparando" && (
@@ -93,12 +86,10 @@ const Kitchen = (props) => {
                   {item.status}{" "}
                 </button>
               )
-              //item.status === "preparando" ? <button className="btn-success"> {item.status} </button> : console.log("lista para entregar")
             }
 
             {
               item.status === "Preparando" && <Ready numbers={item} />
-              //item.status === "preparando" ? <Ready numbers={item} /> : console.log("yaaaaa")
             }
           </div>
         ))}

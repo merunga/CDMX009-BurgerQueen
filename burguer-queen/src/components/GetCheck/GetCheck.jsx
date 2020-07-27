@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-import { Container, Row, Col, Modal } from "react-bootstrap";
+import { Row, Col, Modal } from "react-bootstrap";
 import { showInfoTables } from "../../controllers";
 
 const GetCheck = ({ state }) => {
@@ -14,14 +14,10 @@ const GetCheck = ({ state }) => {
       try {
         const resul = await showInfoTables(id);
         setTotal(resul);
-        //console.log("chido" + resul.orden.precio)
-
         const totalPrice = resul.orden.map((item) => item.precio);
-        console.log(totalPrice);
         const products = resul.orden;
         let orderAgrup = products.reduce((result, item) => {
           if (!result.hasOwnProperty(item.id)) {
-            console.log(item.id);
             result[item.id] = {
               ...item,
               qty: 1,
@@ -35,10 +31,9 @@ const GetCheck = ({ state }) => {
 
         setFinalOrder(orderAgrup);
         let priceTotal = totalPrice.reduce((a, b) => a + b, 0);
-        console.log(priceTotal);
         setSuma(priceTotal);
       } catch (error) {
-        console.log(error);
+        return error
       }
     };
     obtenerDatos();
@@ -87,8 +82,8 @@ const GetCheck = ({ state }) => {
                 <h3>{item.producto} </h3>
                 {(item.producto === "Hamburguesa doble" ||
                   item.producto === "Hamburguesa Simple") && (
-                  <h4>{`(${item.type})`}</h4>
-                )}
+                    <h4>{`(${item.type})`}</h4>
+                  )}
               </Col>
               <Col xs lg="2">
                 <h3>$ {item.precio}</h3>
